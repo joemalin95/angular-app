@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	    <script type="text/javascript">
+
+		var escortCounter = 1;
+
+        function appendToActiveEscorts(){   
+
+            var driver = getDriver(document.getElementById("selDriver").value);
+            var pickup = getPickup(document.getElementById("selPickup").value);
+            var dropOff = getDropOff(document.getElementById("selDropOff").value);
+            var numPsngers = getNumPsngers(document.getElementById("selNumPsngers").value);
+
+			var table = document.getElementById("table_active_escorts");
+			var len = table.rows.length;
+			var row = table.insertRow(len);
+
+			var escNum = escortCounter;
+
+			var cell0 = row.insertCell(0);
+			var cell1 = row.insertCell(1);
+			var cell2 = row.insertCell(2);
+			var cell3 = row.insertCell(3);
+			var cell4 = row.insertCell(4);
+			var cell5 = row.insertCell(5);
+			var cell6 = row.insertCell(6);
+			var cell7 = row.insertCell(7);
+			var cell8 = row.insertCell(8);
+
+			cell0.innerHTML = escortCounter;
+			cell1.innerHTML = driver;
+			cell2.innerHTML = pickup;
+			cell3.innerHTML = dropOff;
+			cell4.innerHTML = numPsngers;
+			cell5.innerHTML = getCurrentTime();
+			cell6.innerHTML = "<input type=\"checkbox\" name=\"noShow\" value=\"showedUp\">";
+			cell7.innerHTML = `<input type=\"submit\" value=\"Edit\" onclick=\"activeEscortEdit(${len}, ${escNum})\">`;
+			cell8.innerHTML = `<input type=\"submit\" value=\"Complete\" onclick=\"appendToCompletedEscorts(${len}, ${escNum})\">`;
+
+			cell0.className = "grid-item";
+			cell1.className = "grid-item";
+			cell2.className = "grid-item";
+			cell3.className = "grid-item";
+			cell4.className = "grid-item";
+			cell5.className = "grid-item";
+			cell6.className = "grid-item";
+			cell7.className = "grid-item";
+			cell8.className = "grid-item";
+
+			escortCounter++;
+
+        }
+            
+        function activeEscortEdit(rowNumber, escortID){
+            var table = document.getElementById("table_active_escorts");
+            var rowCounter = rowNumber;
+            var row = null;
+            var foundCorrectRow = false;
+            
+            do{
+                
+                if(document.getElementById("table_active_escorts").rows[rowCounter] == null)
+                        rowCounter = rowCounter - 1;
+                else {
+                        row = document.getElementById("table_active_escorts").rows[rowCounter].cells;
+                        if(escortID.toString() == row[0].innerHTML)
+                            foundCorrectRow = true;
+                        else
+                            rowCounter = rowCounter - 1;
+                }
+    
+			 } while(rowCounter > 0 && foundCorrectRow == false);
+            
+            row[0].innerHTML = escortID;
+            row[1].innerHTML = "<select id=\"selDriverActive\">" + 
+							         "<option value=\"l50\">L50</option>" + 
+        						      "<option value=\"l1\">L1</option>" +
+                                      "<option value=\"l2\">L2</option>" +
+	    						      "<option value=\"l80\">L80</option>" +
+        						      "<option value=\"l1A\">L1A</option>" + 
+        						      "<option value=\"l1B\">L1B</option>" +
+        						      "<option value=\"l1C\">L1C</option>" +
+							          "<option value=\"l2A\">L2A</option>" +
+	    						      "<option value=\"l2B\">L2B</option>" +
+                                      "</select>";
+            row[2].innerHTML = "<select id=\"selPickupActive\">" +
+              						"<option value=\"nineninety\">990 W. Fullerton</option>" +
+              						"<option value=\"twentyfourhundred\">2400 W. Fullerton</option>" +
+              						"<option value=\"mccabe\">McCabe</option>" +
+              						"<option value=\"univHall\">University Hall</option>" +
+              						"<option value=\"clifFulHall\">Clifton/Fullerton Hall</option>" +
+              						"<option value=\"munHall\">Munroe Hall</option>" +
+              						"<option value=\"belRacineHall\">Belden/Racine Hall</option>" +
+	          					    "<option value=\"shefSqApts\">Sheffield Square Apartments</option>" +
+							        "<option value=\"artsAndLetters\">Arts and Letters</option>" +
+    						"</select>";    
+            row[3].innerHTML = "<select id=\"selDropOffActive\">" +
+              						"<option value=\"nineninety\">990 W. Fullerton</option>" +
+              						"<option value=\"twentyfourhundred\">2400 W. Fullerton</option>" +
+              						"<option value=\"mccabe\">McCabe</option>" +
+              						"<option value=\"univHall\">University Hall</option>" +
+              						"<option value=\"clifFulHall\">Clifton/Fullerton Hall</option>" +
+              						"<option value=\"munHall\">Munroe Hall</option>" +
+              						"<option value=\"belRacineHall\">Belden/Racine Hall</option>" +
+	          					    "<option value=\"shefSqApts\">Sheffield Square Apartments</option>" +
+							        "<option value=\"artsAndLetters\">Arts and Letters</option>" +
+    						"</select>";
+            row[4].innerHTML = "<select id=\"selNumPsngersActive\">" +
+                					"<option value=\"one\">1</option>" +
+                					"<option value=\"two\">2</option>" +
+                					"<option value=\"three\">3</option>" +
+                        "</select>";
+           row[7].innerHTML = `<input type=\"submit\" value=\"Finsihed\" onclick=\"finishedEditingActiveEscort(${rowCounter}, ${escortID})\">`;
+        }
+            
+        function finishedEditingActiveEscort(rowNumber, counter){
+            row = document.getElementById("table_active_escorts").rows[rowNumber].cells;
+            row[1].innerHTML = getDriver(document.getElementById("selDriverActive").value);
+            row[2].innerHTML = getPickup(document.getElementById("selPickupActive").value);
+            row[3].innerHTML = getDropOff(document.getElementById("selDropOffActive").value);
+            row[4].innerHTML = getNumPsngers(document.getElementById("selNumPsngersActive").value);
+            row[7].innerHTML = `<input type=\"submit\" value=\"Edit\" onclick=\"activeEscortEdit(${rowNumber}, ${counter})\">`;
+        }
+            
+        /*
+        Change parameter completedEscort to rowNumber for appendToCompletedEscort
+        */
+            
+        function appendToCompletedEscorts(completedEscort, counter){
+                
+            var table = document.getElementById("table_completed_escorts");
+            var rowCounter = completedEscort;
+            var row = null;
+            var foundCorrectRow = false;
+                
+            do{
+                
+                if(document.getElementById("table_active_escorts").rows[rowCounter] == null)
+                        rowCounter = rowCounter - 1;
+                else {
+                        row = document.getElementById("table_active_escorts").rows[rowCounter].cells;
+                        if(counter.toString() == row[0].innerHTML)
+                            foundCorrectRow = true;
+                        else
+                            rowCounter = rowCounter - 1;
+                }
+    
+			 } while(rowCounter > 0 && foundCorrectRow == false);
+
+			document.getElementById("table_active_escorts").deleteRow(rowCounter);
+	
+			var escNum = row[0].innerHTML;
+			var driver = row[1].innerHTML;
+			var pickup = row[2].innerHTML;
+			var dropOff = row[3].innerHTML;
+			var numPsngers = row[4].innerHTML;
+			var pickupTime = row[5].innerHTML;
+			var noShow = row[6].innerHTML
+			
+			var len = table.rows.length;
+			var row = table.insertRow(len);
+		
+			var cell0 = row.insertCell(0);
+			var cell1 = row.insertCell(1);
+			var cell2 = row.insertCell(2);
+			var cell3 = row.insertCell(3);
+			var cell4 = row.insertCell(4);
+			var cell5 = row.insertCell(5);
+			var cell6 = row.insertCell(6);
+			var cell7 = row.insertCell(7);
+			var cell8 = row.insertCell(8);
+			var cell9 = row.insertCell(9);
+
+			cell0.innerHTML = escNum;
+			cell1.innerHTML = driver;
+			cell2.innerHTML = pickup;
+			cell3.innerHTML = dropOff;
+			cell4.innerHTML = numPsngers;
+			cell5.innerHTML = pickupTime;
+			cell6.innerHTML = getCurrentTime();
+			cell7.innerHTML = "<input type=\"checkbox\" name=\"noShow\" value=\"showedUp\">";
+			cell8.innerHTML = "<input type=\"submit\" value=\"Edit\">";
+			cell9.innerHTML = "<input type=\"submit\" value=\"Complete\" onclick=\"appendToCompletedEscorts(this)\">";
+		
+			cell0.className = "grid-item";
+			cell1.className = "grid-item";
+			cell2.className = "grid-item";
+			cell3.className = "grid-item";
+			cell4.className = "grid-item";
+			cell5.className = "grid-item";
+			cell6.className = "grid-item";
+			cell7.className = "grid-item";
+			cell7.className = "grid-item";
+			cell8.className = "grid-item";
+			cell9.className = "grid-item";
+        }
+
+		function insert(str, index, value) {
+    			return str.substr(0, index) + value + str.substr(index);
+		}
+
+		function getCurrentTime(){
+
+			var d = new Date();
+			var dateString = d.toString();
+			var timeString = dateString.substr(16, 8);
+			var hoursString = timeString.substr(0,2);
+			var minutesString = timeString.substr(3,2);
+			var secondsString = timeString.substr(6,2);
+			var hoursInt = parseInt(hoursString);
+			
+			if(hoursInt >= 12){
+				var adjustedHours = hoursInt - 12;
+				return adjustedHours + ":" + minutesString + ":" + secondsString + " PM";
+			}
+			return hoursInt + ":" + minutesString + ":" + secondsString + " AM";		
+		}
+            
+        function getIdLabel(pickup){
+            switch(pickup){
+                case "990 W. Fullerton":
+                    return "labelOne";
+                case "2400 W. Fullerton":
+                    return "labelTwo";
+                case "McCabe":
+                    return "labelThree";
+                case "University Hall":
+                    return "labelFour";
+                case "Clifton/Fullerton Hall":
+                    return "labelFive";
+                case "Munroe Hall":
+                    return "labelSix";
+                case "Belden/Racine Hall":
+                    return "labelSeven";
+                case "Sheffield Square Apartments":
+                    return "labelEight";
+                case "Arts and Letters":
+                    return "labelNine";
+            }    
+        }
+        
+        function getDriver(driver){
+                switch(driver){
+                    case "l50":
+                        return "L50";
+                    case "l1":
+                        return "L1";
+                    case "l2":
+                        return "L2";
+                    case "l80":
+                        return "L80";
+                    case "l1A":
+                        return "L1A";
+                    case "l1B":
+                        return "L1B";
+                    case "l1C":
+                        return "L1C";
+                    case "l2A":
+                        return "L2A";
+                    case "l2B":
+                        return "L2B";
+                }
+        }
+        
+        function getPickup(pickup){
+            
+                switch(pickup){
+                    case "nineninety":
+                        return "990 W. Fullerton";
+                    case "twentyfourhundred": 
+                        return "2400 W. Fullerton";
+                    case "mccabe": 
+                        return "McCabe";
+                    case "univHall": 
+                        return "University Hall";
+                    case "clifFulHall":
+                            return "Clifton/Fullerton Hall";
+                    case "munHall": 
+                        return "Munroe Hall";
+                    case "belRacineHall": 
+                        return "Belden/Racine Hall";
+                    case "shefSqApts": 
+                        return "Sheffield Square Apartments";
+                    case "artsAndLetters":
+                        return "Arts and Letters";
+                    }      
+        }
+        
+        function getDropOff(dropOff){
+            
+                switch(dropOff){
+                    case "nineninety":
+                        return "990 W. Fullerton";
+                    case "twentyfourhundred": 
+                        return "2400 W. Fullerton";
+                    case "mccabe": 
+                        return "McCabe";
+                    case "univHall": 
+                        return "University Hall";
+                    case "clifFulHall":
+                        return "Clifton/Fullerton Hall";
+                    case "munHall": 
+                        return "Munroe Hall";
+                    case "belRacineHall": 
+                        return "Belden/Racine Hall";
+                    case "shefSqApts": 
+                        return "Sheffield Square Apartments";
+                    case "artsAndLetters":
+                        return "Arts and Letters";
+                }      
+        }
+
+        function getNumPsngers(numPsngers){
+            
+                switch(numPsngers){
+                    case "one":
+                        return "1";
+                    case "two":
+                        return "2";
+                    case "three":
+                        return "3";
+                }
+        }
+
+        </script>
+        <link rel="stylesheet" href="css/main_page_styles.css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300|Open+Sans:700" />
+    </head>
+    <body>
+        <header class="masthead" role="banner">
+		<h1>DePaul University</h1>
+		<h3>Public Safety Escort Service</h3>
+        	<img src="css/depaul.jpeg" alt="DePaul Logo" class="my-icon">
+		<nav role="navigation">
+			<ul class="nav-main">
+				<div class="dropdown">
+            				<button class="dropbtn">Setup</button>
+                				<div class="dropdown-content">
+                  					<a href="#">Officers</a>
+                				</div>
+        	 		</div>
+				<div class="dropdown">
+              				<button class="dropbtn">Data</button>
+                				<div class="dropdown-content">
+                    					<a href="#">Date</a>
+                    					<a href="#">Officer</a>
+							<a href="#">Pickup/Dropoff</a>
+                				</div>
+        	 		</div>
+				<div class="dropdown">
+            				<button class="dropbtn">Logout</button>
+                				<div class="dropdown-content">
+                      				</div>
+        			</div>
+			</ul>               		
+	   </header>
+  	<fieldset class="new-escort-fieldset">
+    		<legend class="new-escort-legend">New Escort</legend>
+    			<table class="table_styles"> 
+        			<tr>
+					<td class="grid-item-header">Assigned To
+ 					</td>
+					<td class="grid-item-header">From
+ 					</td>
+					<td class="grid-item-header">To
+ 					</td>
+					<td class="grid-item-header">Num Passengers
+ 					</td>
+					<td class="grid-item-header">Assign
+ 					</td>
+        			</tr>
+        			<tr>
+		  			<td class="grid-item">
+  						<select id="selDriver">
+							<option value="l50">L50</option>
+        						<option value="l1">L1</option>
+        						<option value="l2">L2</option>
+	    						<option value="l80">L80</option>
+        						<option value="l1A">L1A</option>
+        						<option value="l1B">L1B</option>
+        						<option value="l1C">L1C</option>
+							    <option value="l2A">L2A</option>
+	    						<option value="l2B">L2B</option>
+    				    </select>	
+ 					</td>
+  					<td class="grid-item">
+						<select id="selPickup">
+              						<option value="nineninety">990 W. Fullerton</option>
+              						<option value="twentyfourhundred">2400 W. Fullerton</option>
+              						<option value="mccabe">McCabe</option>
+              						<option value="univHall">University Hall</option>
+              						<option value="clifFulHall">Clifton/Fullerton Hall</option>
+              						<option value="munHall">Munroe Hall</option>
+              						<option value="belRacineHall">Belden/Racine Hall</option>
+	          					<option value="shefSqApts">Sheffield Square Apartments</option>
+							<option value="artsAndLetters">Arts and Letters</option>
+    						</select>  
+  					</td>
+  					<td class="grid-item">
+ 						<select id="selDropOff">
+                					<option value="nineninety">990 W. Fullerton</option>
+                					<option value="twentyfourhundred">2400 W. Fullerton</option>
+                					<option value="mccabe">McCabe</option>
+                					<option value="univHall">University Hall</option>
+                					<option value="clifFulHall">Clifton/Fullerton Hall</option>
+                					<option value="munHall">Munroe Hall</option>
+                					<option value="belRacineHall">Belden/Racine Hall</option>
+	        					<option value="shefSqApts">Sheffield Square Apartments</option>
+							<option value="artsAndLetters">Arts and Letters</option>
+                				</select>
+					</td>  
+					<td class="grid-item">
+						<select id="selNumPsngers">
+                					<option value="one">1</option>
+                					<option value="two">2</option>
+                					<option value="three">3</option>
+                        </select>
+  					</td>
+  					<td class="grid-item">
+  						<input type="submit" value="+" onclick="appendToActiveEscorts()">
+  					</td>
+        			</tr>        
+    			</table>
+	</fieldset>
+	<fieldset class="active-escort-fieldset">
+    		<legend class="active-escort-legend">Active Escorts</legend>
+			<table id="table_active_escorts" class="table_styles">
+        			<tr>
+					<td class="grid-item-header-two">Escort Num
+					</td>
+					<td class="grid-item-header-two">Assigned To
+ 					</td>
+					<td class="grid-item-header-two">From
+ 					</td>
+					<td class="grid-item-header-two">To
+ 					</td>
+					<td class="grid-item-header-two">Num Passengers
+ 					</td>
+					<td class="grid-item-header-two">Time
+ 					</td>
+					<td class="grid-item-header-two">No Show
+ 					</td>
+        				<td class="grid-item-header-two">Edit
+ 					</td>
+					<td class="grid-item-header-two">Complete
+					</td> 
+        			</tr>
+    			</table>
+	</fieldset>
+	<fieldset class="completed-escort-fieldset">
+    		<legend class="completed-escort-legend">Completed Escorts</legend>
+    			<table id="table_completed_escorts" class="table_styles">
+        			<tr>
+					<td class="grid-item-header-three">Escort Num
+					</td>
+					<td class="grid-item-header-three">Assigned To
+ 					</td>
+					<td class="grid-item-header-three">From
+ 					</td>
+					<td class="grid-item-header-three">To
+ 					</td>
+					<td class="grid-item-header-three">Num Passengers
+ 					</td>
+					<td class="grid-item-header-three">Pickup Time
+ 					</td>
+					<td class="grid-item-header-three">Dropoff Time
+ 					</td>
+					<td class="grid-item-header-three">No Show
+ 					</td>
+        				<td class="grid-item-header-three">Edit
+ 					</td>
+					<td class="grid-item-header-three">Complete
+					</td> 
+        			</tr>
+			</table> 
+	</fieldset>       
+	</body>
+</html>
