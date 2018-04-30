@@ -1,0 +1,40 @@
+/*!
+
+ =========================================================
+ * Paper Dashboard Angular - V1.0.1
+ =========================================================
+
+ * Product Page: https://www.creative-tim.com/product/escort-dashboard-angular
+ * Copyright 2017 Creative Tim (https://www.creative-tim.com)
+ * Licensed under MIT (https://github.com/creativetimofficial/escort-dashboard-angular/blob/master/LICENSE.md)
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+ */
+
+@import "escort/variables";
+@import "escort/mixins";
+
+@import "escort/typography";
+
+// Core CSS
+@import "escort/misc";
+@import "escort/sidebar-and-main-panel";
+@import "escort/buttons";
+@import "escort/inputs";
+
+@import "escort/alerts";
+@import "escort/tables";
+
+@import "escort/checkbox-radio";
+@import "escort/navbars";
+@import "escort/footers";
+
+// Fancy Stuff
+@import "escort/animate";
+@import "escort/dropdown";
+@import "escort/cards";
+@import "escort/chartist";
+@import "escort/responsive";
