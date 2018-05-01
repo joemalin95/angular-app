@@ -1,7 +1,5 @@
 ## Development Help
 
-testing
-
 #### To Update From Github
 `git pull origin master`
 <br/>
