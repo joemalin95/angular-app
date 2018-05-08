@@ -7,7 +7,7 @@ declare var google: any;
 @Component({
     selector: 'dashboard-cmp',
     moduleId: module.id,
-    templateUrl: 'dashboard.component.html'
+    templateUrl: 'dashboard.component.html',
 })
 
 export class DashboardComponent implements OnInit{
@@ -117,7 +117,6 @@ export class DashboardComponent implements OnInit{
              position: myLatlng,
              title:"Hello World!"
          });
-        
          marker.setMap(map);
     }
 }

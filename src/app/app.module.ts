@@ -19,6 +19,12 @@ import { AssignComponent } from './assign/assign.component';
 import { ReviewComponent } from './review/review.component';
 
 import { FilterPipe} from './pipes/filter.pipes';
+import { LoginComponent } from './login/login.component';
+
+import { AuthService } from './services/auth.service';
+import { RideService } from './services/ride.service';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthGuard } from './services/auth-guard.service'
 
 @NgModule({
   declarations: [
@@ -26,7 +32,8 @@ import { FilterPipe} from './pipes/filter.pipes';
     DashboardComponent,
     AssignComponent,
       ReviewComponent,
-      FilterPipe
+      FilterPipe,
+      LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,10 +42,10 @@ import { FilterPipe} from './pipes/filter.pipes';
     NavbarModule,
     AngularFireModule.initializeApp(environment.firebase, 'safety-escort'),
     AngularFireDatabaseModule,
-    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyBk40AU-WAyeI8O7xjgpXKeJkvOMbwSse0'})
+    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyA_PdrWE6CaIq-j0HbaiZrvnOQEUuveTI8'})
 
   ],
-  providers: [],
+  providers: [AuthService, AngularFireAuth, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
