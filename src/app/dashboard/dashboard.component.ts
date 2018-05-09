@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
 import { FormsModule }   from '@angular/forms';
 import { NgForm } from '@angular/forms';
-import { EscortService } from './shared/escort.service';
+import { EscortService } from '../services/escort.service';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 declare var $:any;
 declare var google: any;

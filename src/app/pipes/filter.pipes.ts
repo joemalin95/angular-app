@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Ride } from '../data/ride';
+import { Escort } from '../data/escort.model';
 
 @Pipe({
   name: 'mySearch'
 })
 
 export class FilterPipe implements PipeTransform {
-    transform(rides: Ride[], filterStatuses: string[]): Ride[] {
-
+    transform(rides: Escort[], filterStatuses: string[]): Escort[] {
+         
         // Return unfiltered rides if param was not supplied
         if (!rides || !filterStatuses) {
             return rides;

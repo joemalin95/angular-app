@@ -4,7 +4,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 
 import { RideService } from '../services/ride.service';
-import { Ride } from '../data/ride';
+import { Escort } from '../data/escort.model';
 
 @Component({
   selector: 'app-review',
@@ -17,7 +17,7 @@ export class ReviewComponent implements OnInit {
 
     public headerRow: string[];
     public filterStatuses: string[];
-    public rides: FirebaseListObservable<Ride[]>;
+    public rides: FirebaseListObservable<Escort[]>;
 
     constructor(private rideService: RideService) { 
         // Set headers for data table

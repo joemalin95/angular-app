@@ -1,6 +1,6 @@
 import { Injectable, } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Escort } from './escort.model';
+import { Escort } from '../data/escort.model';
 
 @Injectable()
 export class EscortService {
@@ -22,7 +22,7 @@ export class EscortService {
 	else
 		escort.status = "Assigned";
 
-	var date = new Date(Date.now()*1000);
+      //var date = new Date(Date.now()*1000);
 
         this.escortList.push({
             driver : escort.driver,
@@ -31,7 +31,7 @@ export class EscortService {
             passengers : escort.passengers,
             no_show : false,
             status : escort.status,
-            created : date
+            created : Date.now()
         });
     }
 

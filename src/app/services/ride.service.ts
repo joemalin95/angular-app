@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
-import { Ride } from '../data/ride';
+import { Escort } from '../data/escort.model';
 
 @Injectable()
 export class RideService {
 
     private basePath: string = '/something';
 
-    rides: FirebaseListObservable<Ride[]> = null; //  list of objects
-    ride: FirebaseObjectObservable<Ride> = null; //   single object
+    rides: FirebaseListObservable<Escort[]> = null; //  list of objects
+    ride: FirebaseObjectObservable<Escort> = null; //   single object
 
     constructor(private db: AngularFireDatabase) {
     }
 
     // Return a list of observable rides
-    getRidesList(query={}): FirebaseListObservable<Ride[]> {
+    getRidesList(query={}): FirebaseListObservable<Escort[]> {
         this.rides = this.db.list(this.basePath, {
             query: query
         });
@@ -23,7 +23,7 @@ export class RideService {
     }
 
     // Return a single observable ride
-    getRide(key: string): FirebaseObjectObservable<Ride> {
+    getRide(key: string): FirebaseObjectObservable<Escort> {
         const ridePath =  `${this.basePath}/${key}`;
         this.ride = this.db.object(ridePath);
         return this.ride;
@@ -34,7 +34,7 @@ export class RideService {
        console.log(error)
      }
 
-    createRide(ride: Ride): void  {
+    createRide(ride: Escort): void  {
        this.rides.push(ride);
      }
 
