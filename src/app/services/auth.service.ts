@@ -16,6 +16,7 @@ export class AuthService {
             (user) => {
                 if (user) {
                     this.userDetails = user;
+                    this.router.navigate(['/dashboard']);
                     console.log(this.userDetails);
                 }
                     else {
