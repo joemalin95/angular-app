@@ -1,3 +1,34 @@
-<p>
-  review works!
-</p>
+<meta name="google-signin-client_id" content="471261646647-pmod5p08ldkguvpvrd0qb782op08i43k.apps.googleusercontent.com">
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Completed Rides</h4>
+                    <p class="category">A list of all the successfully completed trips</p>
+                </div>
+                <div class="content table-responsive table-full-width">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th *ngFor="let cell of headerRow">{{ cell }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ride of rides | async | mySearch : filterStatuses ">
+                                <td>{{ride.driver}}</td>
+                                <td>{{ride.pickup}}</td>
+                                <td>{{ride.dropoff}}</td>
+                                <td>{{ride.passengers}}</td>
+                                <td>{{ride.no_show}}</td>
+                                <td>{{ride.status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

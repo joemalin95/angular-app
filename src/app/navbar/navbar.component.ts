@@ -2,11 +2,13 @@ import { Component, OnInit, Renderer, ViewChild, ElementRef } from '@angular/cor
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { AuthService } from '../services/auth.service';
 
 @Component({
     moduleId: module.id,
     selector: 'navbar-cmp',
-    templateUrl: 'navbar.component.html'
+    templateUrl: 'navbar.component.html',
+    providers: [AuthService]
 })
 
 export class NavbarComponent implements OnInit{
@@ -18,7 +20,7 @@ export class NavbarComponent implements OnInit{
 
     @ViewChild("navbar-cmp") button;
 
-    constructor(location:Location, private renderer : Renderer, private element : ElementRef) {
+    constructor(location:Location, private renderer : Renderer, private element : ElementRef, public authService: AuthService) {
         this.location = location;
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
