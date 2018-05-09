@@ -10,6 +10,8 @@ import { Escort } from '../../data/escort.model';
 export class EscortListComponent implements OnInit {
 
   escortList : Escort[];
+  public checkVal: boolean;
+
 
   constructor(private escortService : EscortService) { }
 
@@ -28,6 +30,16 @@ export class EscortListComponent implements OnInit {
 			}
 		});
 	});
+
+    this.checkVal = null;
+  }
+
+  toggleCheckbox(key : string) {
+      this.escortList.map( escort => {
+          if (escort.$key == key) {
+              escort.no_show = !escort.no_show;
+          }
+      });
   }
 
   onEdit(esc : Escort){
@@ -43,7 +55,7 @@ export class EscortListComponent implements OnInit {
 
   onComplete(key : string, esc: Escort){
     if(esc.driver != 'No driver yet'){
-	console.log("onComplete() where no_show is " + esc.no_show);
+	console.log("onComplete() where no_show is " + this.checkVal);
     	this.escortService.completeEscort(key, esc);
     } else {
 	if(confirm('Are you sure you want to complete an escort that\'s unassigned?') == true)

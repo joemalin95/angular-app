@@ -12,7 +12,7 @@
         <td>{{escort.pickup}}</td>
         <td>{{escort.dropoff}}</td>
 	<td>{{escort.passengers}}</td>
-	<td><input id="no_show" type="checkbox" #name="ngModel" value="{{escort.no_show}}" name="{{escort.no_show}}" [(ngModel)]="escortService.selectedEscort.no_show"></td>
+	<td><input id="no_show" type="checkbox" (change)="toggleCheckbox(escort.$key)"></td>
 	<td>
 	    <a class="btn" (click)="onEdit(escort)">
                 <i class="fa fa-pencil-square-o"></i>
