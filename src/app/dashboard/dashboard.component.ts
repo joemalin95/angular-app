@@ -1,17 +1,172 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
-
+import { FormsModule }   from '@angular/forms';
+import { NgForm } from '@angular/forms';
+import { EscortService } from './shared/escort.service';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 declare var $:any;
 declare var google: any;
 
 @Component({
     selector: 'dashboard-cmp',
     moduleId: module.id,
-    templateUrl: 'dashboard.component.html'
+    templateUrl: 'dashboard.component.html',
+    providers: [EscortService]
 })
 
 export class DashboardComponent implements OnInit{
+
+    constructor(private escortService : EscortService, private firebase : AngularFireDatabase) { }
+
+    drivers = [
+	'No driver yet',
+        'L50',
+    	'L1',
+    	'L2',
+    	'L80',
+    	'L1A',
+    	'L1B',
+    	'L1C',
+    	'L2A',
+    	'L2B',
+    ];
+    
+    /*
+        {value: 'L50', viewValue: 'L50'},
+    	{value: 'L1', viewValue: 'L1'},
+    	{value: 'L2', viewValue: 'L2'},
+    	{value: 'L80', viewValue: 'L80'},
+    	{value: 'L1A', viewValue: 'L1A'},
+    	{value: 'L1B', viewValue: 'L1B'},
+    	{value: 'L1C', viewValue: 'L1C'},
+    	{value: 'L2A', viewValue: 'L2A'},
+    	{value: 'L2B', viewValue: 'L2B'},
+    */
+    
+    locations = [
+    '1150 W. Fullerton',
+    '990 W. Fullerton',
+    '2400 W. Fullerton',
+    'Arts and Letters',
+    'ATC Annex',
+    'ATC (Sullivan Athletic Center)',
+    'Belden/Racine Hall',
+    'Byrne',
+    'Centennial Hall',
+    'Clifton/Fullerton Hall',
+    'Clifton Parking Garage',
+    'College of Education',
+    'Concert Hall',
+    'Corcoran Hall',
+    'Cortelyou Commons',
+    'Courtside Apartments',
+    'L',
+    'Library',
+    'McCabe Hall',
+    'McGowan South',
+    'Munroe Hall',
+    'Quad',
+    'Racine Properties',
+    'Ray Meyer Fitness Center',
+    'SAC', 
+    'Sanctuary Townhomes',
+    'Sanctuary Hall',
+    'School of Music',
+    'School of Music Annex',
+    'Sheffield Parking Garage',
+    'Sheffield Square Apartments',
+    'St. Vincent\'s Church',
+    'Student Center',
+    'Theatre School',
+    'University Hall',
+    'Vincentian Residence',
+    'Vincent and Louise House',
+    'Wish Field'	 
+    ];
+    
+    /*
+    {value: '1150 W. Fullerton', viewValue: '1150 W. Fullerton'},
+    {value: '990 W. Fullerton', viewValue: '990 W. Fullerton'},
+    {value: '2400 W. Fullerton', viewValue: '2400 W. Fullerton'},
+    {value: 'Arts and Letters', viewValue: 'Arts and Letters'},
+    {value: 'ATC Annex', viewValue: 'ATC Annex'},
+    {value: 'ATC (Sullivan Athletic Center)', viewValue: 'ATC (Sullivan Athletic Center)'},
+    {value: 'Belden/Racine Hall', viewValue: 'Belden/Racine Hall'},
+    {value: 'Byrne', viewValue: 'Byrne'},
+    {value: 'Centennial Hall', viewValue: 'Centennial Hall'},
+    {value: 'Clifton/Fullerton Hall', viewValue: 'Clifton/Fullerton Hall'},
+    {value: 'Clifton Parking Garage', viewValue: 'Clifton Parking Garage'},
+    {value: 'College of Education', viewValue: 'College of Education'},
+    {value: 'Concert Hall', viewValue: 'Concert Hall'},
+    {value: 'Corcoran Hall', viewValue: 'Corcoran Hall'},
+    {value: 'Cortelyou Commons', viewValue: 'Cortelyou Commons'},
+    {value: 'Courtside Apartments', viewValue: 'Courtside Apartments'},
+    {value: 'L', viewValue: 'L'},
+    {value: 'Library', viewValue: 'Library'},
+    {value: 'McCabe Hall', viewValue: 'McCabe Hall'},
+    {value: 'McGowan South', viewValue: 'McGowan South'},
+    {value: 'Munroe Hall', viewValue: 'Munroe Hall'},
+    {value: 'Quad', viewValue: 'Quad'},
+    {value: 'Racine Properties', viewValue: 'Racine Properties'},
+    {value: 'Ray Meyer Fitness Center', viewValue: 'Ray Meyer Fitness Center'},
+    {value: 'SAC', viewValue: 'SAC'}, 
+    {value: 'Sanctuary Townhomes', viewValue: 'Sanctuary Townhomes'},
+    {value: 'Sanctuary Hall', viewValue: 'Sanctuary Hall'},
+    {value: 'School of Music', viewValue: 'School of Music'},
+    {value: 'School of Music Annex', viewValue: 'School of Music Annex'},
+    {value: 'Sheffield Parking Garage', viewValue: 'Sheffield Parking Garage'},
+    {value: 'Sheffield Square Apartments', viewValue: 'Sheffield Square Apartments'},
+    {value: 'St. Vincent\'s Church', viewValue: 'St. Vincent\'s Church'},
+    {value: 'Student Center', viewValue: 'Student Center'},
+    {value: 'Theatre School', viewValue: 'Theatre School'},
+    {value: 'University Hall', viewValue: 'University Hall'},
+    {value: 'Vincentian Residence', viewValue: 'Vincentian Residence'},
+    {value: 'Vincent and Louise House', viewValue: 'Vincent and Louise House'},
+    {value: 'Wish Field', viewValue: 'Wish Field'}	 
+    */
+    
+    passengers = [
+    '1',
+    '2',
+    '3',
+    ];
+    
+    /*
+    {value: '1', viewValue: '1'},
+    {value: '2', viewValue: '2'},
+    {value: '3', viewValue: '3'},
+    */
+
+    onSubmit(escortForm: NgForm){
+	console.log("onSubmit() where escortForm.value.$key = " + escortForm.value.$key);
+	if(escortForm.value.$key == null)
+	   this.escortService.newEscort(escortForm.value);
+	else
+	   this.escortService.updateEscort(escortForm.value.$key, escortForm.value);
+    	this.resetForm(escortForm);
+    }
+
+    resetForm(escortForm? : NgForm){
+    	if(escortForm != null)
+        	escortForm.reset();
+	else {
+	console.log("escortForm was null!");
+
+    	this.escortService.selectedEscort = {
+        	$key : null,
+        	driver : '',
+        	pickup : '',
+        	dropoff : '',
+        	passengers : '',
+		no_show : false,
+		status : '',
+		created : '',
+    	};
+	}
+    }
+
     ngOnInit(){
+        //this.escortService.escortList = this.firebase.list('something');
         var dataSales = {
           labels: ['9:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
           series: [

@@ -1,0 +1,28 @@
+<table class="table table-sm table-hover">
+    <tr>
+	<th>Driver</th>
+	<th>Pickup</th>
+	<th>Dropoff</th>
+	<th>Passengers</th>
+	<th>No show</th>
+	<th>Options</th>
+    </tr>
+    <tr *ngFor="let escort of escortList">
+        <td>{{escort.driver}}</td>
+        <td>{{escort.pickup}}</td>
+        <td>{{escort.dropoff}}</td>
+	<td>{{escort.passengers}}</td>
+	<td><input id="no_show" type="checkbox" #name="ngModel" value="{{escort.no_show}}" name="{{escort.no_show}}" [(ngModel)]="escortService.selectedEscort.no_show"></td>
+	<td>
+	    <a class="btn" (click)="onEdit(escort)">
+                <i class="fa fa-pencil-square-o"></i>
+            </a>
+            <a class="btn" (click)="onDelete(escort.$key)">
+                <i class="fa fa-trash-o"></i>
+            </a>
+	    <a class="btn" (click)="onComplete(escort.$key, escort)">
+		<i class="fa fa-check" style="color:#33cc33"></i>
+	    </a>
+        </td>
+    </tr>
+</table>
