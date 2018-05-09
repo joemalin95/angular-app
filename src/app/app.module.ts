@@ -40,6 +40,7 @@ import { AuthGuard } from './services/auth-guard.service'
     AssignComponent,
     ReviewComponent,
     EscortListComponent,
+    LoginComponent,
     FilterPipe
   ],
   imports: [
