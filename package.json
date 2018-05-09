@@ -30,7 +30,7 @@
     "chartist": "0.9.4",
     "core-js": "2.4.1",
     "express": "4.15.3",
-    "firebase": "^4.13.1",
+    "firebase": "^4.6.1",
     "jquery": "1.12.4",
     "moment": "2.18.1",
     "npm": "^6.0.0",
