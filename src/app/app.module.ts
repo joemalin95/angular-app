@@ -31,7 +31,8 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
 import { RideService } from './services/ride.service';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AuthGuard } from './services/auth-guard.service'
+import { AuthGuard } from './services/auth-guard.service';
+import { StudentComponent } from './student/student.component'
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AuthGuard } from './services/auth-guard.service'
     ReviewComponent,
     EscortListComponent,
     LoginComponent,
-    FilterPipe
+    FilterPipe,
+    StudentComponent
   ],
   imports: [
     BrowserModule,
