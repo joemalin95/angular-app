@@ -31,7 +31,8 @@ export class EscortService {
             passengers : escort.passengers,
             no_show : false,
             status : escort.status,
-            created : Date.now()
+            created : Date.now(),
+            finished : null
         });
     }
 
@@ -48,7 +49,8 @@ export class EscortService {
 	console.log("Was this escort a no show? " + esc.no_show);
 	this.escortList.update($key, {
 		status : 'Completed',
-		no_show : esc.no_show
+		no_show : esc.no_show,
+        finished : Date.now()
 	
 	});
   }

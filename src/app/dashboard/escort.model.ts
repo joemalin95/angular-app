@@ -7,5 +7,5 @@ export class Escort {
         no_show : boolean;
         status : string;
         created : string;
-	formatted_date : string;
+        finished : string;
 }

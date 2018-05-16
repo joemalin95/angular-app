@@ -32,7 +32,7 @@ export class EscortService {
             no_show : false,
             status : escort.status,
             created : Date.now(),
-            //formatted_date : date
+            finished : "some random string"
 	});
     }
 
@@ -49,8 +49,8 @@ export class EscortService {
 	console.log("Was this escort a no show? " + esc.no_show);
 	this.escortList.update($key, {
 		status : 'Completed',
-		no_show : esc.no_show
-	
+		no_show : esc.no_show,
+        finished : "some random string 2"
 	});
   }
 

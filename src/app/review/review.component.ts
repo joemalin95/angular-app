@@ -26,6 +26,8 @@ export class ReviewComponent implements OnInit {
             'Pickup',
             'Dropoff',
             'Passengers',
+            'Start Time',
+            'Completed Time',
             'No Show',
         ];
 
