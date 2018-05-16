@@ -1,6 +1,6 @@
 import { Injectable, } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Escort } from '../data/escort.model';
+import { Escort } from './escort.model';
 
 @Injectable()
 export class EscortService {
@@ -22,7 +22,7 @@ export class EscortService {
 	else
 		escort.status = "Assigned";
 
-      //var date = new Date(Date.now()*1000);
+
 
         this.escortList.push({
             driver : escort.driver,
@@ -32,8 +32,8 @@ export class EscortService {
             no_show : false,
             status : escort.status,
             created : Date.now(),
-            finished : null
-        });
+            finished : "some random string"
+	});
     }
 
   updateEscort($key : string, escort : Escort){
@@ -50,8 +50,7 @@ export class EscortService {
 	this.escortList.update($key, {
 		status : 'Completed',
 		no_show : esc.no_show,
-        finished : Date.now()
-	
+        finished : "some random string 2"
 	});
   }
 

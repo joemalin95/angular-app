@@ -21,6 +21,8 @@
                                 <td>{{ride.pickup}}</td>
                                 <td>{{ride.dropoff}}</td>
                                 <td>{{ride.passengers}}</td>
+                                <td>{{ride.created | date : 'MMM d, h:mm a'}}</td>
+                                <td>{{ride.finished | date : 'MMM d, h:mm a'}}</td>
                                 <td>{{ride.no_show}}</td>
                                 <td>{{ride.status}}</td>
                             </tr>
