@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
-import { Escort } from '../data/escort.model';
+import { Escort } from '../model/escort.model';
 
 @Injectable()
 export class RideService {

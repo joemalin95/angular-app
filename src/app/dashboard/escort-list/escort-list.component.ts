@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EscortService } from '../../services/escort.service';
-import { Escort } from '../../data/escort.model';
+import { Escort } from '../../model/escort.model';
 
 @Component({
   selector: 'app-escort-list',

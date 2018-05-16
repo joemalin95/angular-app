@@ -1,6 +1,6 @@
 import { Injectable, } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Escort } from '../data/escort.model';
+import { Escort } from '../model/escort.model';
 
 @Injectable()
 export class EscortService {
