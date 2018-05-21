@@ -5,6 +5,7 @@ import { FormsModule }   from '@angular/forms';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 import { environment } from '../environments/environment';
 
@@ -30,7 +31,6 @@ import { LoginComponent } from './login/login.component';
 
 import { AuthService } from './services/auth.service';
 import { RideService } from './services/ride.service';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthGuard } from './services/auth-guard.service';
 import { StudentComponent } from './student/student.component'
 
@@ -50,13 +50,16 @@ import { StudentComponent } from './student/student.component'
     RouterModule.forRoot(AppRoutes),
     SidebarModule,
     NavbarModule,
-    AngularFireDatabaseModule,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyA_PdrWE6CaIq-j0HbaiZrvnOQEUuveTI8'}),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     FormsModule,
   ],
-  providers: [AuthService, AngularFireAuth, AuthGuard],
+    providers: [
+        AuthService,
+        AngularFireAuth,
+        AuthGuard
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
