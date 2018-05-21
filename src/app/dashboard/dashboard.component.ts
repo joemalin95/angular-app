@@ -16,7 +16,7 @@ declare var google: any;
 
 export class DashboardComponent implements OnInit{
 
-    constructor(private escortService : EscortService, private firebase : AngularFireDatabase) { }
+    constructor(public escortService : EscortService, private firebase : AngularFireDatabase) { }
 
     drivers = [
 	'No driver yet',
