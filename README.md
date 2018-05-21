@@ -6,7 +6,7 @@ An angular application that allows DePaul Public Safety Officers the ability to 
 
 A live demo of this application can be found here: http://angular.malinowski.studio/
 
-### Installation
+## Installation
 
 To install this app, run these commands:
 
