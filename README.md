@@ -8,6 +8,8 @@ A live demo of this application can be found here: http://angular.malinowski.stu
 
 ## Installation
 
+*NOTE* - `npm` is required to install this app
+
 To install this app, run these commands:
 
 ```bash
@@ -15,8 +17,11 @@ git clone https://github.com/joemalin95/angular-app.git
 cd angular-app/
 git checkout master
 npm install
-ng build
+npm run-script ng build
 ```
+## Serving the App
+
+run `npm run-script ng serve` and visit http://localhost:4200
 
 ## Running the Tests
 
