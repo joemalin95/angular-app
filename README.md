@@ -4,21 +4,21 @@ An angular application that allows DePaul Public Safety Officers the ability to 
 
 ## Live Demo
 
-A live demo of this application can be found here: [http://angular.malinowski.studio/]
+A live demo of this application can be found here: http://angular.malinowski.studio/
 
 ### Installation
 
-To install this app, run these following commands:
+To install this app, run these commands:
 
 ```bash
 git clone git@github.com:joemalin95/angular-app.git
 cd angular-app/
 git checkout master
 npm install
-ng build --prod
+ng build
 ```
 
-## Running the tests
+## Running the Tests
 
 TODO
 
