@@ -8,7 +8,7 @@ A live demo of this application can be found here: http://angular.malinowski.stu
 
 ## Installation
 
-*NOTE* - `npm` is required to install this app
+*NOTE* `npm` is required to install this app
 
 To install this app, run these commands:
 
