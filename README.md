@@ -11,7 +11,7 @@ A live demo of this application can be found here: http://angular.malinowski.stu
 To install this app, run these commands:
 
 ```bash
-git clone git@github.com:joemalin95/angular-app.git
+git clone https://github.com/joemalin95/angular-app.git
 cd angular-app/
 git checkout master
 npm install
