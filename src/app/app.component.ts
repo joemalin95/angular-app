@@ -15,4 +15,8 @@ export class AppComponent{
     isLoggedIn(){
         return this.authService.isLoggedIn();
     }
+
+    isInitialized(){
+        return this.authService.isInitialized();
+    }
 }

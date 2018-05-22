@@ -6,34 +6,23 @@ import { StudentComponent }   from './student/student.component';
 import { ReviewComponent }   from './review/review.component';
 import { LoginComponent }   from './login/login.component';
 import { AuthGuard } from './services/auth-guard.service'
+import { AppLayoutComponent } from './app-layout/app-layout.component'
 
 
 export const AppRoutes: Routes = [
-    {
+
+    // App routes goes here here
+    { 
         path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full',
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'dashboard',
-        component: DashboardComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'assign',
-        component: AssignComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'student',
-        component: StudentComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'review',
-        component: ReviewComponent,
-        canActivate: [AuthGuard]
+        component: AppLayoutComponent, 
+        canActivate: [AuthGuard],
+        children: [
+          { path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
+          { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+          { path: 'assign', component: AssignComponent, canActivate: [AuthGuard] },
+          { path: 'student', component: StudentComponent, canActivate: [AuthGuard] },
+          { path: 'review', component: ReviewComponent, }
+        ]
     },
     {
         path: 'login',

@@ -32,7 +32,8 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
 import { RideService } from './services/ride.service';
 import { AuthGuard } from './services/auth-guard.service';
-import { StudentComponent } from './student/student.component'
+import { StudentComponent } from './student/student.component';
+import { AppLayoutComponent } from './app-layout/app-layout.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { StudentComponent } from './student/student.component'
     EscortListComponent,
     LoginComponent,
     FilterPipe,
-    StudentComponent
+    StudentComponent,
+    AppLayoutComponent,
   ],
   imports: [
     BrowserModule,
