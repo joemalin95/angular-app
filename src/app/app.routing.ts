@@ -17,15 +17,12 @@ export const AppRoutes: Routes = [
         component: AppLayoutComponent, 
         canActivate: [AuthGuard],
         children: [
-          { path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
-          { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-          { path: 'assign', component: AssignComponent, canActivate: [AuthGuard] },
-          { path: 'student', component: StudentComponent, canActivate: [AuthGuard] },
-          { path: 'review', component: ReviewComponent, }
+          { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+          { path: 'dashboard', component: DashboardComponent},
+          { path: 'assign', component: AssignComponent },
+          { path: 'student', component: StudentComponent },
+          { path: 'review', component: ReviewComponent }
         ]
     },
-    {
-        path: 'login',
-        component: LoginComponent
-    }
+    { path: 'login', component: LoginComponent }
 ]
