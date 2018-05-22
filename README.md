@@ -25,7 +25,7 @@ run `npm run-script ng serve` and visit http://localhost:4200
 
 ## Running the Tests
 
-TODO
+`npm run-script ng test`
 
 ## Built With
 
