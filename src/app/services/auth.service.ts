@@ -38,8 +38,13 @@ export class AuthService {
         if (this.userDetails == null ) {
             return false;
         } else {
+            console.log("user details: " + JSON.stringify(this.userDetails));
             return true;
         }
+    }
+
+    getUserEmail() {
+        return this.userDetails.email;
     }
 
     isInitialized() {

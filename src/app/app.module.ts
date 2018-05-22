@@ -31,9 +31,9 @@ import { LoginComponent } from './login/login.component';
 
 import { AuthService } from './services/auth.service';
 import { RideService } from './services/ride.service';
-import { AuthGuard } from './services/auth-guard.service';
+import { AuthGuard, OfficerAuthGuard } from './services/auth-guard.service';
 import { StudentComponent } from './student/student.component';
-import { AppLayoutComponent } from './app-layout/app-layout.component';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import { AppLayoutComponent } from './app-layout/app-layout.component';
     LoginComponent,
     FilterPipe,
     StudentComponent,
-    AppLayoutComponent,
+    MainLayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +60,8 @@ import { AppLayoutComponent } from './app-layout/app-layout.component';
     providers: [
         AuthService,
         AngularFireAuth,
-        AuthGuard
+        AuthGuard,
+        OfficerAuthGuard
     ],
   bootstrap: [AppComponent]
 })
