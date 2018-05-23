@@ -23,9 +23,8 @@ export class EscortListComponent implements OnInit {
 			var y = element.payload.toJSON();
 			y["$key"] = element.key;
 			var currentEscort = (y as Escort);
-			console.log("ngOnInit(), currentEscort.status = " + currentEscort.status);
 			if(currentEscort.status != 'Completed'){
-				console.log("Does not equal completed");
+                console.log("escort-list -> ngOnInit() : currentEscort.status = " + currentEscort.status);
 				this.escortList.push(currentEscort);
 			}
 		});

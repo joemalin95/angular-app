@@ -31,6 +31,10 @@ import { LoginComponent } from './login/login.component';
 
 import { AuthService } from './services/auth.service';
 import { RideService } from './services/ride.service';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { StudentOrderedEscortComponent } from './student/student-ordered-escort/student-ordered-escort.component';
+import { StudentEscortsViewComponent } from './student/student-escorts-view/student-escorts-view.component';
+import { EscortService } from './services/escort.service';
 import { AuthGuard, OfficerAuthGuard } from './services/auth-guard.service';
 import { StudentComponent } from './student/student.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
@@ -45,6 +49,8 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
     LoginComponent,
     FilterPipe,
     StudentComponent,
+    StudentOrderedEscortComponent,
+    StudentEscortsViewComponent
     MainLayoutComponent,
   ],
   imports: [
@@ -57,12 +63,13 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
     AngularFireDatabaseModule,
     FormsModule,
   ],
-    providers: [
-        AuthService,
-        AngularFireAuth,
-        AuthGuard,
-        OfficerAuthGuard
-    ],
+  providers: [
+      AuthService,
+      AngularFireAuth,
+      AuthGuard,
+      EscortService,
+      OfficerAuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,27 @@
+
+<p>These escorts are out and about...</p>
+<table class="table table-sm table-hover">
+    <tr>
+	    <th>Pickup</th>
+	    <th>Dropoff</th>
+        <th>Time</th>
+    </tr>
+    <tr *ngFor="let escort of escortListActive" class="success">
+        <td>{{escort.pickup}}</td>
+        <td>{{escort.dropoff}}</td>
+        <td>{{escort.created | date : 'h:mm a' }}</td>
+    </tr>
+</table>
+<p>These escorts are in line...</p>
+<table class="table table-sm table-hover">
+    <tr>
+	    <th>Pickup</th>
+	    <th>Dropoff</th>
+        <th>Time</th>
+    </tr>
+    <tr *ngFor="let escort of escortListUnassigned" class="warning">
+        <td>{{escort.pickup}}</td>
+        <td>{{escort.dropoff}}</td>
+        <td>{{escort.created | date : 'h:mm a' }}</td>
+    </tr>
+</table>
