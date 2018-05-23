@@ -16,6 +16,11 @@
         margin: $navbar-margin-brand;
         padding: $navbar-padding-brand;
         font-size: $font-size-large-navbar;
+
+        &.navbar-brand-custom:hover {
+            cursor: default;
+            color: #777 !important;
+        }
     }
     .navbar-nav{
          > li > a {

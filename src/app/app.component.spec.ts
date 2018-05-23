@@ -18,13 +18,13 @@ import { SidebarModule } from './sidebar/sidebar.module';
 import { NavbarModule} from './navbar/navbar.module';
 import { NguiMapModule} from '@ngui/map';
 
-import { DashboardComponent }   from './dashboard/dashboard.component';
+import { DispatchComponent }   from './dispatch/dispatch.component';
 import { ReviewComponent } from './review/review.component';
 
 import { Component } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 
-import { EscortListComponent } from './dashboard/escort-list/escort-list.component';
+import { EscortListComponent } from './dispatch/escort-list/escort-list.component';
 
 
 import { FilterPipe } from './pipes/filter.pipes';
@@ -41,7 +41,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
           declarations: [
             AppComponent,
-            DashboardComponent,
+            DispatchComponent,
             ReviewComponent,
             EscortListComponent,
             LoginComponent,

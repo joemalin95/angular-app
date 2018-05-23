@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { EscortService } from '../../services/escort.service';
-import { Escort } from '../../model/escort.model';
+import { Escort } from '../../data/escort.data';
 
 @Component({
-  selector: 'app-escort-list',
-  templateUrl: './escort-list.component.html',
-  styleUrls: ['./escort-list.component.scss']
+  selector: 'app-officer-active-escorts',
+  templateUrl: './officer-active-escorts.component.html',
 })
-export class EscortListComponent implements OnInit {
+export class OfficerActiveEscortsComponent implements OnInit {
 
   escortList : Escort[];
   public checkVal: boolean;
-
 
   constructor(private escortService : EscortService) { }
 
@@ -60,5 +58,5 @@ export class EscortListComponent implements OnInit {
 	if(confirm('Are you sure you want to complete an escort that\'s unassigned?') == true)
 		this.escortService.completeEscort(key, esc);
     }
-    }
+  }
 }

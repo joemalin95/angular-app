@@ -17,7 +17,7 @@ export class AuthService {
             (user) => {
                 if (user) {
                     this.userDetails = user;
-                    this.router.navigate(['/dashboard']).then(() => {
+                    this.router.navigate(['/dispatch']).then(() => {
                         this.initialized = true;
                     });
                 } else {
@@ -38,7 +38,6 @@ export class AuthService {
         if (this.userDetails == null ) {
             return false;
         } else {
-            console.log("user details: " + JSON.stringify(this.userDetails));
             return true;
         }
     }

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Escort } from '../model/escort.model';
+import { Escort } from '../data/escort.data';
 
 @Pipe({
   name: 'mySearch'

@@ -16,39 +16,41 @@ import { SidebarModule } from './sidebar/sidebar.module';
 import { NavbarModule} from './navbar/navbar.module';
 import { NguiMapModule} from '@ngui/map';
 
-import { DashboardComponent }   from './dashboard/dashboard.component';
+import { DispatchComponent }   from './dispatch/dispatch.component';
 import { ReviewComponent } from './review/review.component';
 
 import { Component } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-
-import { EscortListComponent } from './dashboard/escort-list/escort-list.component';
-
 
 import { FilterPipe} from './pipes/filter.pipes';
 import { LoginComponent } from './login/login.component';
 
 import { AuthService } from './services/auth.service';
 import { RideService } from './services/ride.service';
-import { StudentOrderedEscortComponent } from './student/student-ordered-escort/student-ordered-escort.component';
-import { StudentEscortsViewComponent } from './student/student-escorts-view/student-escorts-view.component';
 import { EscortService } from './services/escort.service';
 import { AuthGuard, OfficerAuthGuard } from './services/auth-guard.service';
 import { StudentComponent } from './student/student.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { StudentCreateEscortComponent } from './student/student-create-escort/student-create-escort.component';
+import { AssignedEscortComponent } from './student/assigned-escort/assigned-escort.component';
+import { UnassignedEscortComponent } from './student/unassigned-escort/unassigned-escort.component';
+import { OfficerCreateEscortComponent } from './dispatch/officer-create-escort/officer-create-escort.component';
+import { OfficerActiveEscortsComponent } from './dispatch/officer-active-escorts/officer-active-escorts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
+    DispatchComponent,
     ReviewComponent,
-    EscortListComponent,
     LoginComponent,
     FilterPipe,
     StudentComponent,
-    StudentOrderedEscortComponent,
-    StudentEscortsViewComponent,
     MainLayoutComponent,
+    StudentCreateEscortComponent,
+    AssignedEscortComponent,
+    UnassignedEscortComponent,
+    OfficerCreateEscortComponent,
+    OfficerActiveEscortsComponent,
   ],
   imports: [
     BrowserModule,

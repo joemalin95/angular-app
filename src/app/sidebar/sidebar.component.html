@@ -1,7 +1,9 @@
 
 <div class="sidebar-wrapper">
+
+    <!-- Header -->
     <div class="logo">
-        <a href="https://www.creative-tim.com" class="simple-text">
+        <a class="simple-text">
             <div class="logo-img">
                 <img src="../../assets/img/depaul-logo.png" alt="">
             </div>
@@ -10,40 +12,27 @@
             </div>
         </a>
     </div>
+
     <ul class="nav">
-            <li *ngIf="isNotMobileMenu()">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="ti-panel"></i>
-					<p>Stats</p>
-                </a>
-            </li>
-            <li class="dropdown" *ngIf="isNotMobileMenu()">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="ti-bell"></i>
-                        <p class="notification">5</p>
-    					<p>Notifications</p>
-    					<b class="caret"></b>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Notification 1</a></li>
-                    <li><a href="#">Notification 2</a></li>
-                    <li><a href="#">Notification 3</a></li>
-                    <li><a href="#">Notification 4</a></li>
-                    <li><a href="#">Another notification</a></li>
-                  </ul>
-            </li>
-            <li *ngIf="isNotMobileMenu()">
-                <a href="#">
-					<i class="ti-settings"></i>
-					<p>Settings</p>
-                </a>
-            </li>
-            <li class="divider" *ngIf="isNotMobileMenu()"></li>
-        <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
+
+        <!-- Logout (Mobile) -->
+        <li *ngIf="isMobileMenu()">
+            <a class="logout-button" (click)="authService.logout()">
+                <i class="ti-power-off"></i>
+                <p>Logout</p>
+            </a>
+        </li>
+
+        <!-- Divider (Mobile) -->
+        <li class="divider" *ngIf="isMobileMenu()"></li>
+
+        <!-- Pages -->
+        <li *ngFor="let menuItem of menuItems" routerLinkActive="active" [ngClass]="{active: (getTitle() == menuItem.title)}">
             <a [routerLink]="[menuItem.path]">
                 <i class="{{menuItem.icon}}"></i>
                 <p>{{menuItem.title}}</p>
             </a>
         </li>
+
     </ul>
 </div>

@@ -9,17 +9,17 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-    constructor(private authService: AuthService, private router: Router) { 
-    
-    }
+    constructor(
+        private authService: AuthService, 
+        private router: Router
+    ) { }
 
-    ngOnInit() {
-    }
+    ngOnInit() { }
 
     signInWithGoogle() {
         this.authService.signInWithGoogle()
             .then((res) => { 
-                this.router.navigate(['dashboard'])
+                this.router.navigate(['dispatch'])
             })
             .catch((err) => console.log(err));
     }

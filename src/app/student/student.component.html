@@ -1,6 +1,43 @@
-<div class="col-md-7">
-    <app-student-ordered-escort></app-student-ordered-escort>
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">New Escort</h4>
+            </div>
+            <div class="content">
+                <app-student-create-escort></app-student-create-escort>
+            </div>
+        </div>
+    </div>
+
 </div>
-<div class="col-md-5">
-    <app-student-escorts-view></app-student-escorts-view>
+
+
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">In progress</h4>
+                <p class="category">These escorts are out and about</p>
+            </div>
+            <div class="content">
+                <app-assigned-escort></app-assigned-escort>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Pending</h4>
+                <p class="category">These escorts are up next</p>
+            </div>
+            <div class="content">
+                <app-unassigned-escort></app-unassigned-escort>
+            </div>
+        </div>
+    </div>
+
 </div>

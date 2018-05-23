@@ -4,7 +4,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 
 import { RideService } from '../services/ride.service';
-import { Escort } from '../model/escort.model';
+import { Escort } from '../data/escort.data';
 
 @Component({
   selector: 'app-review',

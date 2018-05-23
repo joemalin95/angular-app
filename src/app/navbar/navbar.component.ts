@@ -5,7 +5,6 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 import { AuthService } from '../services/auth.service';
 
 @Component({
-    moduleId: module.id,
     selector: 'navbar-cmp',
     templateUrl: 'navbar.component.html',
     providers: [AuthService]
@@ -20,7 +19,12 @@ export class NavbarComponent implements OnInit{
 
     @ViewChild("navbar-cmp") button;
 
-    constructor(location:Location, private renderer : Renderer, private element : ElementRef, public authService: AuthService) {
+    constructor(
+        location: Location, 
+        private renderer : Renderer, 
+        private element : ElementRef, 
+        public authService: AuthService
+    ) {
         this.location = location;
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
@@ -39,7 +43,7 @@ export class NavbarComponent implements OnInit{
                 return this.listTitles[item].title;
             }
         }
-        return 'Dashboard';
+        return 'Dispatch';
     }
     sidebarToggle(){
         var toggleButton = this.toggleButton;
