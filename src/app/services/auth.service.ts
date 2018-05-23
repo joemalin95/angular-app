@@ -44,7 +44,7 @@ export class AuthService {
     }
 
     getUserEmail() {
-        return this.userDetails.email;
+        return this.userDetails ? this.userDetails.email : "";
     }
 
     isInitialized() {
