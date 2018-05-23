@@ -11,7 +11,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 })
 export class StudentOrderedEscortComponent implements OnInit {
 
-  constructor(private escortService : EscortService, private firebase : AngularFireDatabase) { }
+  constructor(public escortService : EscortService, private firebase : AngularFireDatabase) { }
 
   ngOnInit() {
   }
