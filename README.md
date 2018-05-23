@@ -32,6 +32,7 @@ run `npm run-script ng serve` and visit http://localhost:4200
 * [Material Dashboard Angular2](https://www.creative-tim.com/product/material-dashboard-angular2) - Angular2 Template
 * [Firebase](https://firebase.google.com/) - Firebase Database
 * [AngularFire](https://github.com/angular/angularfire2) - Firebase-Angular Library
+* [ngx-pagination](https://github.com/michaelbromley/ngx-pagination) - Pagination Library
 
 ## Authors
 
