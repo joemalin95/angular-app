@@ -12,7 +12,6 @@ export interface RouteInfo {
 
 export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'ti-panel', class: '' },
-    { path: '/assign', title: 'Assign',  icon: 'ti-car', class: '' },
     { path: '/review', title: 'Review',  icon: 'ti-stats-up', class: '' }
 ];
 

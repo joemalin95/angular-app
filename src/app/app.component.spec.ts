@@ -19,7 +19,6 @@ import { NavbarModule} from './navbar/navbar.module';
 import { NguiMapModule} from '@ngui/map';
 
 import { DashboardComponent }   from './dashboard/dashboard.component';
-import { AssignComponent } from './assign/assign.component';
 import { ReviewComponent } from './review/review.component';
 
 import { Component } from '@angular/core';
@@ -43,7 +42,6 @@ describe('AppComponent', () => {
           declarations: [
             AppComponent,
             DashboardComponent,
-            AssignComponent,
             ReviewComponent,
             EscortListComponent,
             LoginComponent,
