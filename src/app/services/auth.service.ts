@@ -9,6 +9,7 @@ export class AuthService {
 
     private user: Observable<firebase.User>;
     private userDetails: firebase.User = null;
+    private initialized: boolean = false;
 
     constructor(private _firebaseAuth: AngularFireAuth, private router: Router) { 
         this.user = _firebaseAuth.authState;
@@ -16,11 +17,12 @@ export class AuthService {
             (user) => {
                 if (user) {
                     this.userDetails = user;
-                    this.router.navigate(['/dashboard']);
-                    console.log(this.userDetails);
-                }
-                    else {
+                    this.router.navigate(['/dashboard']).then(() => {
+                        this.initialized = true;
+                    });
+                } else {
                     this.userDetails = null;
+                    this.initialized = true;
                 }
             }
         );
@@ -36,8 +38,17 @@ export class AuthService {
         if (this.userDetails == null ) {
             return false;
         } else {
+            console.log("user details: " + JSON.stringify(this.userDetails));
             return true;
         }
+    }
+
+    getUserEmail() {
+        return this.userDetails ? this.userDetails.email : "";
+    }
+
+    isInitialized() {
+        return this.initialized;
     }
 
     logout() {

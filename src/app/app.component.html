@@ -1,20 +1,5 @@
-<div *ngIf="isLoggedIn()" class="wrapper">
-    <div class="sidebar" data-background-color="white" data-active-color="danger">
-        <sidebar-cmp></sidebar-cmp>
+<router-outlet>
+    <div [ngClass]="{'loader-container': true, 'active': !isInitialized()}">
+        <div class="loader"></div>
     </div>
-    <div class="main-panel">
-        <navbar-cmp></navbar-cmp>
-        <div class="content">
-            <router-outlet></router-outlet>
-        </div>
-    </div>
-</div>
-
-
-<div *ngIf="isLoggedIn() == false" class="wrapper">
-    <div class="login-panel">
-        <div class="content">
-            <app-login></app-login>
-        </div>
-    </div>
-</div>
+</router-outlet>

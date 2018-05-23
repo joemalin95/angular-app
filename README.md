@@ -1,30 +1,38 @@
-## Development Help
+# DePaul Safety Escort App
 
-#### To Update From Github
-`git pull origin master`
-<br/>
-<br/>
+An angular application that allows DePaul Public Safety Officers the ability to create, assign, complete, and analyze safety escort rides. DePaul students can also request and track a ride in the Student View.
 
-#### To Build
+## Live Demo
 
-###### build for development
-`./build`
+A live demo of this application can be found here: http://angular.malinowski.studio/
 
-###### build for development when changes are detected
-`./build --watch`
+## Installation
 
-###### build for production
-`./build --prod`
-<br/>
-<br/>
+*NOTE* `npm` is required to install this app
 
-#### To Save Changes To Github
+To install this app, run these commands:
 
-###### (OPTIONAL)
-* `git status (to view which files are changed)`
-* `git diff (to view which lines have been changed)`
+```bash
+git clone https://github.com/joemalin95/angular-app.git
+cd angular-app/
+git checkout master
+npm install
+npm run-script ng build
+```
+## Serving the App
 
-###### (REQUIRED)
-1. `git add -A`
-2. `git commit -m "YOUR MESSAGE HERE"`
-3. `git push origin master`
+run `npm run-script ng serve` and visit http://localhost:4200
+
+## Running the Tests
+
+`npm run-script ng test`
+
+## Built With
+
+* [Material Dashboard Angular2](https://www.creative-tim.com/product/material-dashboard-angular2) - Angular2 Template
+* [Firebase](https://firebase.google.com/) - Firebase Database
+* [AngularFire](https://github.com/angular/angularfire2) - Firebase-Angular Library
+
+## Authors
+
+Joey Malinowski, Ben Huff

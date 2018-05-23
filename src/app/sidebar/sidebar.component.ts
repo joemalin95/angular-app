@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OfficerAuthGuard } from '../services/auth-guard.service';
 
 declare var $:any;
 
@@ -10,10 +11,13 @@ export interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-    { path: 'dashboard', title: 'Dashboard',  icon: 'ti-panel', class: '' },
-    { path: 'assign', title: 'Assign',  icon: 'ti-car', class: '' },
-    { path: 'student', title: 'Student',  icon: 'ti-user', class: '' },
-    { path: 'review', title: 'Review',  icon: 'ti-stats-up', class: '' }
+    { path: '/dashboard', title: 'Dashboard',  icon: 'ti-panel', class: '' },
+    { path: '/assign', title: 'Assign',  icon: 'ti-car', class: '' },
+    { path: '/review', title: 'Review',  icon: 'ti-stats-up', class: '' }
+];
+
+export const STUDENT_ROUTES: RouteInfo[] = [
+    { path: '/student', title: 'Student',  icon: 'ti-user', class: '' },
 ];
 
 @Component({
@@ -25,8 +29,15 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
     public menuItems: any[];
 
+    constructor(private officerAuthGuard: OfficerAuthGuard) { 
+        if (officerAuthGuard.canActivate()) {
+            this.menuItems = ROUTES;
+        } else {
+            this.menuItems = STUDENT_ROUTES;
+        }
+    }
+
     ngOnInit() {
-        this.menuItems = ROUTES.filter(menuItem => menuItem);
     }
 
     isNotMobileMenu(){

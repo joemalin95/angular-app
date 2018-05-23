@@ -5,6 +5,7 @@ import { FormsModule }   from '@angular/forms';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 import { environment } from '../environments/environment';
 
@@ -31,11 +32,12 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
 import { RideService } from './services/ride.service';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AuthGuard } from './services/auth-guard.service';
-import { StudentComponent } from './student/student.component';
 import { StudentOrderedEscortComponent } from './student/student-ordered-escort/student-ordered-escort.component';
 import { StudentEscortsViewComponent } from './student/student-escorts-view/student-escorts-view.component';
 import { EscortService } from './services/escort.service';
+import { AuthGuard, OfficerAuthGuard } from './services/auth-guard.service';
+import { StudentComponent } from './student/student.component';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 
 @NgModule({
   declarations: [
@@ -49,19 +51,25 @@ import { EscortService } from './services/escort.service';
     StudentComponent,
     StudentOrderedEscortComponent,
     StudentEscortsViewComponent
+    MainLayoutComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(AppRoutes),
     SidebarModule,
     NavbarModule,
-    AngularFireDatabaseModule,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyA_PdrWE6CaIq-j0HbaiZrvnOQEUuveTI8'}),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     FormsModule,
   ],
-  providers: [AuthService, AngularFireAuth, AuthGuard, EscortService],
+  providers: [
+      AuthService,
+      AngularFireAuth,
+      AuthGuard,
+      EscortService,
+      OfficerAuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
