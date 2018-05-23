@@ -33,5 +33,6 @@ export const AppRoutes: Routes = [
     },
 
     // non-authorized routes goes here here
-    { path: 'login', component: LoginComponent }
+    { path: 'login', component: LoginComponent },
+    { path: '**', redirectTo: 'login', pathMatch: 'full'},
 ]

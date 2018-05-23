@@ -75,3 +75,25 @@
         padding: 15px 8px;
     }
 }
+
+.escort-completed-pagination {
+
+    display: flex;
+
+    &> pagination-template {
+        width: 100%;
+        padding-right: 25px;
+    }
+
+    .ngx-pagination {
+        float: right;
+    }
+
+    li:not(.pagination-previous):not(.pagination-next):not(.current) {
+            display: none;
+    }
+
+    li.current {
+        background-color: #134685 !important;
+    }
+}

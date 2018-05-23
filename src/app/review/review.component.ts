@@ -9,7 +9,6 @@ import { Escort } from '../data/escort.data';
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',
-  styleUrls: ['./review.component.scss'],
   providers: [RideService, AngularFireDatabase]
 })
 
@@ -18,6 +17,7 @@ export class ReviewComponent implements OnInit {
     public headerRow: string[];
     public filterStatuses: string[];
     public rides: FirebaseListObservable<Escort[]>;
+    public pageNum: number = 0;
 
     constructor(private rideService: RideService) { 
         // Set headers for data table

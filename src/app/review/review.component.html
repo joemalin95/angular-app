@@ -16,18 +16,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let ride of rides | async | mySearch : filterStatuses ">
+                            <tr *ngFor=" let ride of rides 
+                                        | async 
+                                        | reverse 
+                                        | mySearch : filterStatuses  
+                                        | paginate: { itemsPerPage: 5, currentPage: pageNum } "
+                            >
                                 <td>{{ride.driver}}</td>
                                 <td>{{ride.pickup}}</td>
                                 <td>{{ride.dropoff}}</td>
                                 <td>{{ride.passengers}}</td>
                                 <td>{{ride.created | date : 'MMM d, h:mm a'}}</td>
                                 <td>{{ride.finished | date : 'MMM d, h:mm a'}}</td>
-                                <td>{{ride.no_show}}</td>
-                                <td>{{ride.status}}</td>
+                                <td *ngIf="ride.no_show">True</td>
+                                <td *ngIf="!ride.no_show">False</td>
                             </tr>
                         </tbody>
                     </table>
+                        <pagination-controls 
+                            class="escort-completed-pagination" 
+                            (pageChange)="pageNum = $event"
+                        >
+                        </pagination-controls>
 
                 </div>
             </div>

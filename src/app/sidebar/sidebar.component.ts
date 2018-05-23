@@ -28,7 +28,6 @@ export const STUDENT_ROUTES: RouteInfo[] = [
 
 export class SidebarComponent implements OnInit {
     public menuItems: any[];
-    private listTitles: any[];
     location: Location;
 
     constructor(
@@ -45,9 +44,7 @@ export class SidebarComponent implements OnInit {
         }
     }
 
-    ngOnInit() {
-        this.listTitles = ROUTES.filter(listTitle => listTitle);
-    }
+    ngOnInit() { }
 
     isMobileMenu(){
         return ($(window).width() <= 991);
@@ -55,12 +52,11 @@ export class SidebarComponent implements OnInit {
 
     getTitle(){
         var titlee = window.location.pathname;
-        titlee = titlee.substring(1);
-        for(var item = 0; item < this.listTitles.length; item++){
-            if(this.listTitles[item].path === titlee){
-                return this.listTitles[item].title;
+        for(var item = 0; item < this.menuItems.length; item++){
+            if(this.menuItems[item].path === titlee){
+                return this.menuItems[item].title;
             }
         }
-        return 'Dispatch';
+        return 'DePaul Safety Escort Service';
     }
 }

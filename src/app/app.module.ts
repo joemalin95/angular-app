@@ -23,6 +23,7 @@ import { Component } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import { FilterPipe} from './pipes/filter.pipes';
+import { ReversePipe} from './pipes/reverse.pipes';
 import { LoginComponent } from './login/login.component';
 
 import { AuthService } from './services/auth.service';
@@ -37,6 +38,8 @@ import { UnassignedEscortComponent } from './student/unassigned-escort/unassigne
 import { OfficerCreateEscortComponent } from './dispatch/officer-create-escort/officer-create-escort.component';
 import { OfficerActiveEscortsComponent } from './dispatch/officer-active-escorts/officer-active-escorts.component';
 
+import {NgxPaginationModule} from 'ngx-pagination';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +47,7 @@ import { OfficerActiveEscortsComponent } from './dispatch/officer-active-escorts
     ReviewComponent,
     LoginComponent,
     FilterPipe,
+    ReversePipe,
     StudentComponent,
     MainLayoutComponent,
     StudentCreateEscortComponent,
@@ -61,6 +65,7 @@ import { OfficerActiveEscortsComponent } from './dispatch/officer-active-escorts
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     FormsModule,
+    NgxPaginationModule,
   ],
   providers: [
       AuthService,

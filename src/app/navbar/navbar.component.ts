@@ -1,8 +1,9 @@
 import { Component, OnInit, Renderer, ViewChild, ElementRef } from '@angular/core';
-import { ROUTES } from '../sidebar/sidebar.component';
+import { ROUTES, STUDENT_ROUTES } from '../sidebar/sidebar.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AuthService } from '../services/auth.service';
+import { OfficerAuthGuard } from '../services/auth-guard.service';
 
 @Component({
     selector: 'navbar-cmp',
@@ -23,27 +24,31 @@ export class NavbarComponent implements OnInit{
         location: Location, 
         private renderer : Renderer, 
         private element : ElementRef, 
-        public authService: AuthService
+        public authService: AuthService,
+        private officerAuthGuard: OfficerAuthGuard,
     ) {
         this.location = location;
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
+        if (officerAuthGuard.canActivate()) {
+            this.listTitles = ROUTES;
+        } else {
+            this.listTitles = STUDENT_ROUTES;
+        }
     }
 
     ngOnInit(){
-        this.listTitles = ROUTES.filter(listTitle => listTitle);
         var navbar : HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
     }
     getTitle(){
         var titlee = window.location.pathname;
-        titlee = titlee.substring(1);
         for(var item = 0; item < this.listTitles.length; item++){
             if(this.listTitles[item].path === titlee){
                 return this.listTitles[item].title;
             }
         }
-        return 'Dispatch';
+        return 'DePaul Safety Escort Service';
     }
     sidebarToggle(){
         var toggleButton = this.toggleButton;
