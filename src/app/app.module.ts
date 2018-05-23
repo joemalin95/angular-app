@@ -31,7 +31,6 @@ import { LoginComponent } from './login/login.component';
 
 import { AuthService } from './services/auth.service';
 import { RideService } from './services/ride.service';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { StudentOrderedEscortComponent } from './student/student-ordered-escort/student-ordered-escort.component';
 import { StudentEscortsViewComponent } from './student/student-escorts-view/student-escorts-view.component';
 import { EscortService } from './services/escort.service';
@@ -50,7 +49,7 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
     FilterPipe,
     StudentComponent,
     StudentOrderedEscortComponent,
-    StudentEscortsViewComponent
+    StudentEscortsViewComponent,
     MainLayoutComponent,
   ],
   imports: [
