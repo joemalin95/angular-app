@@ -32,7 +32,10 @@ import { AuthService } from './services/auth.service';
 import { RideService } from './services/ride.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthGuard } from './services/auth-guard.service';
-import { StudentComponent } from './student/student.component'
+import { StudentComponent } from './student/student.component';
+import { StudentOrderedEscortComponent } from './student/student-ordered-escort/student-ordered-escort.component';
+import { StudentEscortsViewComponent } from './student/student-escorts-view/student-escorts-view.component';
+import { EscortService } from './services/escort.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ import { StudentComponent } from './student/student.component'
     EscortListComponent,
     LoginComponent,
     FilterPipe,
-    StudentComponent
+    StudentComponent,
+    StudentOrderedEscortComponent,
+    StudentEscortsViewComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,7 @@ import { StudentComponent } from './student/student.component'
     AngularFireDatabaseModule,
     FormsModule,
   ],
-  providers: [AuthService, AngularFireAuth, AuthGuard],
+  providers: [AuthService, AngularFireAuth, AuthGuard, EscortService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

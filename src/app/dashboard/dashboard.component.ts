@@ -10,8 +10,7 @@ declare var google: any;
 @Component({
     selector: 'dashboard-cmp',
     moduleId: module.id,
-    templateUrl: 'dashboard.component.html',
-    providers: [EscortService]
+    templateUrl: 'dashboard.component.html'
 })
 
 export class DashboardComponent implements OnInit{
@@ -127,35 +126,35 @@ export class DashboardComponent implements OnInit{
     */
 
     onSubmit(escortForm: NgForm){
-	console.log("onSubmit() where escortForm.value.$key = " + escortForm.value.$key);
-	if(escortForm.value.$key == null)
-	   this.escortService.newEscort(escortForm.value);
-	else
-	   this.escortService.updateEscort(escortForm.value.$key, escortForm.value);
-    	this.resetForm(escortForm);
+	   console.log("onSubmit() where escortForm.value.$key = " + escortForm.value.$key);
+	   if(escortForm.value.$key == null)
+	       this.escortService.newEscort(escortForm.value);
+	   else
+	       this.escortService.updateEscort(escortForm.value.$key, escortForm.value);
+           this.resetForm(escortForm);
     }
 
     resetForm(escortForm? : NgForm){
     	if(escortForm != null)
         	escortForm.reset();
-	else {
-	console.log("escortForm was null!");
+	   else {
+	       console.log("escortForm was null!");
 
-    	this.escortService.selectedEscort = {
-        	$key : null,
-        	driver : '',
-        	pickup : '',
-        	dropoff : '',
-        	passengers : '',
-		no_show : false,
-		status : '',
-		created : '',
-    	};
-	}
+    	   this.escortService.selectedEscort = {
+               $key : null,
+        	   driver : '',
+        	   pickup : '',
+        	   dropoff : '',
+        	   passengers : '',
+		       no_show : false,
+		       status : '',
+		       created : '',
+    	   };
+	   }
     }
 
     ngOnInit(){
-        //this.escortService.escortList = this.firebase.list('something');
+        
         var dataSales = {
           labels: ['9:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
           series: [

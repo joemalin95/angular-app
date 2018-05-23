@@ -16,13 +16,19 @@ export class EscortService {
   }
   
   newEscort(escort : Escort){
+    
 	console.log("Called newEscort() and status is: " + escort.status);
-	if(escort.driver == 'No driver yet')
+    console.log("Pickup is " + escort.pickup);
+    console.log("Dropoff is " + escort.dropoff);
+    
+	if(escort.driver == 'No driver yet' || escort.driver == null){
 		escort.status = "Unassigned";
+        escort.driver = "No driver yet";
+    }
 	else
 		escort.status = "Assigned";
-
-      //var date = new Date(Date.now()*1000);
+        
+        console.log("In escort.service - where status = " + escort.status);
 
         this.escortList.push({
             driver : escort.driver,
@@ -37,11 +43,20 @@ export class EscortService {
     }
 
   updateEscort($key : string, escort : Escort){
+  
+    var currentStatus : string = "";
+    
+    if(escort.driver != 'No driver yet')
+        currentStatus = "Assigned";
+    else
+        currentStatus = "Unassigned";
+        
 	this.escortList.update($key, {
-	    driver : escort.driver,
+	        driver : escort.driver,
             pickup : escort.pickup,
             dropoff : escort.dropoff,
-            passengers : escort.passengers
+            passengers : escort.passengers,
+            status : currentStatus
 	});
   }
   
