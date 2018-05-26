@@ -14,12 +14,19 @@ import { Escort } from '../data/escort.data';
 
 export class ReviewComponent implements OnInit {
 
+
     public headerRow: string[];
     public filterStatuses: string[];
     public rides: FirebaseListObservable<Escort[]>;
     public pageNum: number = 0;
 
-    constructor(private rideService: RideService) { 
+    constructor(private rideService: RideService) { }
+
+    ngOnInit() {
+
+        // Get rides from ride service
+        this.rides = this.rideService.getRidesList({});
+
         // Set headers for data table
         this.headerRow = [ 
             'Driver', 
@@ -31,14 +38,8 @@ export class ReviewComponent implements OnInit {
             'No Show',
         ];
 
-        // Get rides from ride service
-        this.rides = this.rideService.getRidesList();
-
         // filter out assigned and unassigned rides to only 
         // show completed rides
-        this.filterStatuses = [ "assigned", "unassigned" ]
-    }
-
-    ngOnInit() {
+        this.filterStatuses = [ "assigned", "unassigned" ];
     }
 }

@@ -11,7 +11,7 @@ export class EscortService {
   constructor(private firebase : AngularFireDatabase) { }
 
   getData(){
-	this.escortList = this.firebase.list('something');
+    this.escortList = this.firebase.list('something');
 	return this.escortList;
   }
   

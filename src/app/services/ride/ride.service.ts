@@ -28,33 +28,33 @@ export class RideService {
         this.ride = this.db.object(ridePath);
         return this.ride;
     }
-    //
-     // Default error handling for all actions
-     private handleError(error) {
-       console.log(error)
-     }
+
+    // Default error handling for all actions
+    private handleError(error) {
+      console.log(error)
+    }
 
     createRide(ride: Escort): void  {
        this.rides.push(ride);
-     }
+    }
 
 
-     // Update an existing ride
-     updateRide(key: string, value: any): void {
-       this.rides.update(key, value)
-         .catch(error => this.handleError(error))
-     }
+    // Update an existing ride
+    updateRide(key: string, value: any): void {
+      this.rides.update(key, value)
+        .catch(error => this.handleError(error))
+    }
 
-     // Deletes a single ride
-     deleteRide(key: string): void {
-         this.rides.remove(key)
-           .catch(error => this.handleError(error))
-     }
+    // Deletes a single ride
+    deleteRide(key: string): void {
+        this.rides.remove(key)
+          .catch(error => this.handleError(error))
+    }
 
-     // Deletes the entire list of rides
-     deleteAll(): void {
-         this.rides.remove()
-           .catch(error => this.handleError(error))
-     }
+    // Deletes the entire list of rides
+    deleteAll(): void {
+        this.rides.remove()
+          .catch(error => this.handleError(error))
+    }
 
 }
