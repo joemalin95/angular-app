@@ -1,45 +1,47 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StudentCreateEscortComponent } from './student-create-escort/student-create-escort.component';
-import { AssignedEscortComponent } from './assigned-escort/assigned-escort.component';
-import { UnassignedEscortComponent } from './unassigned-escort/unassigned-escort.component';
-import { FormsModule }   from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
-import { AngularFireModule } from 'angularfire2';
+import { NavbarComponent } from './navbar.component';
+
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { environment } from '../../environments/environment';
 
-
 import { EscortService } from '../services/escort/escort.service';
+import { FormsModule }   from '@angular/forms';
 
-import { StudentComponent } from './student.component';
+import { AuthService } from '../services/auth/auth.service';
+import { OfficerAuthGuard } from '../services/auth/auth-guard.service';
 
-describe('StudentComponent', () => {
-  let component: StudentComponent;
-  let fixture: ComponentFixture<StudentComponent>;
+describe('NavbarComponent', () => {
+  let component: NavbarComponent;
+  let fixture: ComponentFixture<NavbarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         declarations: [ 
-            StudentComponent,
-            StudentCreateEscortComponent,
-            AssignedEscortComponent,
-            UnassignedEscortComponent,
+            NavbarComponent,
         ],
         imports: [
-            FormsModule,
             AngularFireModule.initializeApp(environment.firebaseConfig),
             AngularFireDatabaseModule,
+            FormsModule,
+            RouterTestingModule,
         ],
         providers: [
             EscortService,
+            AngularFireAuth,
+            OfficerAuthGuard,
+            AuthService
         ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StudentComponent);
+    fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

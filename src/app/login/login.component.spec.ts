@@ -1,45 +1,43 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StudentCreateEscortComponent } from './student-create-escort/student-create-escort.component';
-import { AssignedEscortComponent } from './assigned-escort/assigned-escort.component';
-import { UnassignedEscortComponent } from './unassigned-escort/unassigned-escort.component';
-import { FormsModule }   from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing'
 
-import { AngularFireModule } from 'angularfire2';
+import { LoginComponent } from './login.component';
+
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { environment } from '../../environments/environment';
 
-
 import { EscortService } from '../services/escort/escort.service';
+import { FormsModule }   from '@angular/forms';
 
-import { StudentComponent } from './student.component';
 
-describe('StudentComponent', () => {
-  let component: StudentComponent;
-  let fixture: ComponentFixture<StudentComponent>;
+describe('LoginComponent', () => {
+  let component: LoginComponent;
+  let fixture: ComponentFixture<LoginComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         declarations: [ 
-            StudentComponent,
-            StudentCreateEscortComponent,
-            AssignedEscortComponent,
-            UnassignedEscortComponent,
+            LoginComponent,
         ],
         imports: [
-            FormsModule,
             AngularFireModule.initializeApp(environment.firebaseConfig),
             AngularFireDatabaseModule,
+            FormsModule,
+            RouterTestingModule,
         ],
         providers: [
             EscortService,
+            AngularFireAuth,
         ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StudentComponent);
+    fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

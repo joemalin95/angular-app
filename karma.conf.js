@@ -30,6 +30,6 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     browsers: ['PhantomJS'],
-    singleRun: true,
+    singleRun: true
   });
 };

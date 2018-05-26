@@ -5,7 +5,7 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../../../environments/environment';
 
 import { OfficerActiveEscortsComponent } from './officer-active-escorts.component';
-import { EscortService } from '../../services/escort.service';
+import { EscortService } from '../../services/escort/escort.service';
 
 describe('OfficerActiveEscortsComponent', () => {
   let component: OfficerActiveEscortsComponent;

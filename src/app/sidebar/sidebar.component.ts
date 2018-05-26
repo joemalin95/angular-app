@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { OfficerAuthGuard } from '../services/auth-guard.service';
+import { OfficerAuthGuard } from '../services/auth/auth-guard.service';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/auth/auth.service';
 
 declare var $:any;
 

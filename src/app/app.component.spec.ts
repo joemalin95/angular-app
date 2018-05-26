@@ -12,7 +12,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
-import { AppRoutes } from './app.routing';
 
 import { SidebarModule } from './sidebar/sidebar.module';
 import { NavbarModule} from './navbar/navbar.module';
@@ -30,9 +29,9 @@ import { FilterPipe } from './pipes/filter.pipes';
 import { ReversePipe} from './pipes/reverse.pipes';
 import { LoginComponent } from './login/login.component';
 
-import { AuthService } from './services/auth.service';
-import { RideService } from './services/ride.service';
-import { AuthGuard } from './services/auth-guard.service';
+import { AuthService } from './services/auth/auth.service';
+import { RideService } from './services/ride/ride.service';
+import { AuthGuard } from './services/auth/auth-guard.service';
 import { StudentComponent } from './student/student.component'
 import { OfficerCreateEscortComponent } from './dispatch/officer-create-escort/officer-create-escort.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 
-import { RideService } from '../services/ride.service';
+import { RideService } from '../services/ride/ride.service';
 import { Escort } from '../data/escort.data';
 
 @Component({

@@ -26,10 +26,10 @@ import { FilterPipe} from './pipes/filter.pipes';
 import { ReversePipe} from './pipes/reverse.pipes';
 import { LoginComponent } from './login/login.component';
 
-import { AuthService } from './services/auth.service';
-import { RideService } from './services/ride.service';
-import { EscortService } from './services/escort.service';
-import { AuthGuard, OfficerAuthGuard } from './services/auth-guard.service';
+import { AuthService } from './services/auth/auth.service';
+import { RideService } from './services/ride/ride.service';
+import { EscortService } from './services/escort/escort.service';
+import { AuthGuard, OfficerAuthGuard } from './services/auth/auth-guard.service';
 import { StudentComponent } from './student/student.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { StudentCreateEscortComponent } from './student/student-create-escort/student-create-escort.component';
