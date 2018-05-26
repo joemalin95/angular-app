@@ -39,6 +39,7 @@ import { OfficerCreateEscortComponent } from './dispatch/officer-create-escort/o
 import { OfficerActiveEscortsComponent } from './dispatch/officer-active-escorts/officer-active-escorts.component';
 
 import {NgxPaginationModule} from 'ngx-pagination';
+import { D3graphsComponent } from './review/d3graphs/d3graphs.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     UnassignedEscortComponent,
     OfficerCreateEscortComponent,
     OfficerActiveEscortsComponent,
+    D3graphsComponent,
   ],
   imports: [
     BrowserModule,
