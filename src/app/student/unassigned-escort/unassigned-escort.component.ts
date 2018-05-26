@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EscortService } from '../../services/escort.service';
+import { EscortService } from '../../services/escort/escort.service';
 import { Escort } from '../../data/escort.data';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { NgForm } from '@angular/forms';
-import { EscortService } from '../../services/escort.service';
+import { EscortService } from '../../services/escort/escort.service';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { DePaulData } from '../../data/depaul.data';
 

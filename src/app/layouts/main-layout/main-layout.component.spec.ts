@@ -4,8 +4,8 @@ import { MainLayoutComponent } from './main-layout.component';
 import { SidebarComponent } from '../../sidebar/sidebar.component';
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { RouterTestingModule } from '@angular/router/testing'
-import { OfficerAuthGuard } from '../../services/auth-guard.service'
-import { AuthService } from '../../services/auth.service'
+import { OfficerAuthGuard } from '../../services/auth/auth-guard.service'
+import { AuthService } from '../../services/auth/auth.service'
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../../../environments/environment';

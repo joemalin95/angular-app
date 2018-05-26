@@ -12,7 +12,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
-import { AppRoutes } from './app.routing';
 
 import { SidebarModule } from './sidebar/sidebar.module';
 import { NavbarModule} from './navbar/navbar.module';
@@ -24,16 +23,23 @@ import { ReviewComponent } from './review/review.component';
 import { Component } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 
-import { EscortListComponent } from './dispatch/escort-list/escort-list.component';
 
 
 import { FilterPipe } from './pipes/filter.pipes';
+import { ReversePipe} from './pipes/reverse.pipes';
 import { LoginComponent } from './login/login.component';
 
-import { AuthService } from './services/auth.service';
-import { RideService } from './services/ride.service';
-import { AuthGuard } from './services/auth-guard.service';
+import { AuthService } from './services/auth/auth.service';
+import { RideService } from './services/ride/ride.service';
+import { AuthGuard } from './services/auth/auth-guard.service';
 import { StudentComponent } from './student/student.component'
+import { OfficerCreateEscortComponent } from './dispatch/officer-create-escort/officer-create-escort.component';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { StudentCreateEscortComponent } from './student/student-create-escort/student-create-escort.component';
+import { AssignedEscortComponent } from './student/assigned-escort/assigned-escort.component';
+import { UnassignedEscortComponent } from './student/unassigned-escort/unassigned-escort.component';
+import { OfficerActiveEscortsComponent } from './dispatch/officer-active-escorts/officer-active-escorts.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 describe('AppComponent', () => {
@@ -43,10 +49,16 @@ describe('AppComponent', () => {
             AppComponent,
             DispatchComponent,
             ReviewComponent,
-            EscortListComponent,
             LoginComponent,
             FilterPipe,
-            StudentComponent
+            ReversePipe,
+            StudentComponent,
+            OfficerCreateEscortComponent,
+            MainLayoutComponent,
+            StudentCreateEscortComponent,
+            AssignedEscortComponent,
+            UnassignedEscortComponent,
+            OfficerActiveEscortsComponent
           ],
           imports: [
             BrowserModule,
@@ -57,6 +69,7 @@ describe('AppComponent', () => {
             AngularFireModule.initializeApp(environment.firebaseConfig),
             AngularFireDatabaseModule,
             FormsModule,
+            NgxPaginationModule,
           ],
           providers: [
               AuthService,

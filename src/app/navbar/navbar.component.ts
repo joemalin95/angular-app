@@ -2,8 +2,8 @@ import { Component, OnInit, Renderer, ViewChild, ElementRef } from '@angular/cor
 import { ROUTES, STUDENT_ROUTES } from '../sidebar/sidebar.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { AuthService } from '../services/auth.service';
-import { OfficerAuthGuard } from '../services/auth-guard.service';
+import { AuthService } from '../services/auth/auth.service';
+import { OfficerAuthGuard } from '../services/auth/auth-guard.service';
 
 @Component({
     selector: 'navbar-cmp',
