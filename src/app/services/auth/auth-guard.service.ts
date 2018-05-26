@@ -21,6 +21,7 @@ export class OfficerAuthGuard implements CanActivate {
 
     private officerEmails: Array<String> = [
         "joemalin95@gmail.com",
+        "benjaminehuff@gmail.com"
     ];
 
     constructor(private router: Router, private authService: AuthService) { }
