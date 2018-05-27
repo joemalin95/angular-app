@@ -4,13 +4,14 @@ import { of } from 'rxjs/observable/of';
 import { By } from '@angular/platform-browser';
 
 import { ReviewComponent } from './review.component';
-import { EscortService } from '../services/escort/escort.service';
+import { EscortObservableService } from '../services/escort/escort-observable.service';
 
 import { FilterPipe } from '../pipes/filter.pipes';
 import { ReversePipe} from '../pipes/reverse.pipes';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { environment } from '../../environments/environment';
 
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -25,7 +26,9 @@ import { Escort } from '../data/escort.data';
 //                                      //
 //////////////////////////////////////////
 
-const escortServiceStub =
+// Escort service stub
+
+const escortObservableServiceStub =
     [ { $key:  "LD94WCNdqb8j9Fe89Jm",
         driver: "L2",
         pickup: "Belden/Racine Hall",
@@ -43,7 +46,7 @@ describe('ReviewComponent', () => {
     let fixture: ComponentFixture<ReviewComponent>;
     let de: DebugElement;
 
-    let service: EscortService;
+    let service: EscortObservableService;
     let spy: jasmine.Spy;
 
 //////////////////////////////////////////
@@ -53,9 +56,7 @@ describe('ReviewComponent', () => {
 //////////////////////////////////////////
 
     
-    // Escort service stub
-
-    // Initialize
+    // Initialize Test Bed
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [ 
@@ -69,7 +70,8 @@ describe('ReviewComponent', () => {
                 NgxPaginationModule,
             ],
             providers: [ 
-                EscortService,
+                EscortObservableService,
+                AngularFireDatabase,
             ]
         }).compileComponents();
     }));
@@ -82,8 +84,8 @@ describe('ReviewComponent', () => {
 
         de = fixture.debugElement;
 
-        service = de.injector.get(EscortService);
-        spy = spyOn(service, 'getEscortList').and.returnValue(of(escortServiceStub));
+        service = de.injector.get(EscortObservableService);
+        spy = spyOn(service, 'getEscortObservableList').and.returnValue(of(escortObservableServiceStub));
 
         fixture.detectChanges();
     });
@@ -100,12 +102,12 @@ describe('ReviewComponent', () => {
     });
 
     // Test getEscortList call
-    it('should call getEscortList', () => {
+    it('should call escortObservableService', () => {
         expect(spy).toHaveBeenCalled();
     });
 
     // Test getEscortList call frequency
-    it('should only call getEscortList once', () => {
+    it('should only call escortObservableService once', () => {
         expect(spy.calls.all().length ).toEqual(1);
     });
 

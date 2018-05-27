@@ -14,20 +14,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="review-row" *ngFor=" let ride of rides 
+                            <tr class="review-row" *ngFor=" let escort of escortList 
                                         | async 
                                         | reverse 
                                         | mySearch : filterStatuses  
                                         | paginate : { itemsPerPage: 5, currentPage: pageNum } "
                             >
-                                <td>{{ride.driver}}</td>
-                                <td>{{ride.pickup}}</td>
-                                <td>{{ride.dropoff}}</td>
-                                <td>{{ride.passengers}}</td>
-                                <td>{{ride.created | date : 'MMM d, h:mm a'}}</td>
-                                <td>{{ride.finished | date : 'MMM d, h:mm a'}}</td>
-                                <td *ngIf="ride.no_show">True</td>
-                                <td *ngIf="!ride.no_show">False</td>
+                                <td>{{escort.driver}}</td>
+                                <td>{{escort.pickup}}</td>
+                                <td>{{escort.dropoff}}</td>
+                                <td>{{escort.passengers}}</td>
+                                <td>{{escort.created | date : 'MMM d, h:mm a'}}</td>
+                                <td>{{escort.finished | date : 'MMM d, h:mm a'}}</td>
+                                <td *ngIf="escort.no_show">True</td>
+                                <td *ngIf="!escort.no_show">False</td>
                             </tr>
                         </tbody>
                     </table>

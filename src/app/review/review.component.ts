@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 
-import { EscortService } from '../services/escort/escort.service';
+import { EscortObservableService } from '../services/escort/escort-observable.service';
 import { Escort } from '../data/escort.data';
 
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',
-  providers: [EscortService, AngularFireDatabase]
+  providers: [EscortObservableService, AngularFireDatabase]
 })
 
 export class ReviewComponent implements OnInit {
@@ -26,16 +25,16 @@ export class ReviewComponent implements OnInit {
         'No Show',
     ];
 
-    // filter out assigned and unassigned rides to only 
-    // show completed rides
+    // filter out assigned and unassigned escorts to only 
+    // show completed escorts
     public filterStatuses: string[] = [ "assigned", "unassigned" ];
-    public rides: AngularFireList<any>;
+    public escortList: FirebaseListObservable<Escort[]>;
     public pageNum: number = 0;
 
-    constructor(private rideService: EscortService) { }
+    constructor(private escortObservableService: EscortObservableService) { }
 
     ngOnInit() {
-        // Get rides from ride service
-        this.rides = this.rideService.getEscortList();
+        // Get escortList from escort observable service
+        this.escortList = this.escortObservableService.getEscortObservableList();
     }
 }
