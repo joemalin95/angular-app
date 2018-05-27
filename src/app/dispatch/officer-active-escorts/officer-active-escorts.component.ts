@@ -39,7 +39,6 @@ export class OfficerActiveEscortsComponent implements OnInit {
   }
 
   onEdit(esc : Escort){
-    console.log("Called onEdit");
     this.escortService.selectedEscort = Object.assign({}, esc);
   }
   
@@ -51,7 +50,6 @@ export class OfficerActiveEscortsComponent implements OnInit {
 
   onComplete(key : string, esc: Escort){
     if(esc.driver != 'No driver yet'){
-	console.log("onComplete() where no_show is " + this.checkVal);
     	this.escortService.completeEscort(key, esc);
     } else {
 	if(confirm('Are you sure you want to complete an escort that\'s unassigned?') == true)
