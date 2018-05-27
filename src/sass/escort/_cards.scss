@@ -237,3 +237,9 @@
         border-radius: 4px;
     }
 }
+
+.escorts-pending-card .content {
+    min-height: 209px;
+    max-height: 209px;
+    overflow-y: scroll;
+}
