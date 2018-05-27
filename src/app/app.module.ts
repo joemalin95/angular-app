@@ -40,6 +40,8 @@ import { OfficerActiveEscortsComponent } from './dispatch/officer-active-escorts
 
 import {NgxPaginationModule} from 'ngx-pagination';
 import { GraphComponent } from './graph/graph.component';
+import { PickupGraphComponent } from './graph/pickup-graph/pickup-graph.component';
+import { DriverGraphComponent } from './graph/driver-graph/driver-graph.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { GraphComponent } from './graph/graph.component';
     OfficerCreateEscortComponent,
     OfficerActiveEscortsComponent,
     GraphComponent,
+    PickupGraphComponent,
+    DriverGraphComponent,
   ],
   imports: [
     BrowserModule,
