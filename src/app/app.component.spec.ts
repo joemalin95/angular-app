@@ -30,7 +30,6 @@ import { ReversePipe} from './pipes/reverse.pipes';
 import { LoginComponent } from './login/login.component';
 
 import { AuthService } from './services/auth/auth.service';
-import { RideService } from './services/ride/ride.service';
 import { AuthGuard } from './services/auth/auth-guard.service';
 import { StudentComponent } from './student/student.component'
 import { OfficerCreateEscortComponent } from './dispatch/officer-create-escort/officer-create-escort.component';

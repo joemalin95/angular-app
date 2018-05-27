@@ -14,7 +14,7 @@ export class OfficerActiveEscortsComponent implements OnInit {
   constructor(private escortService : EscortService) { }
 
   ngOnInit() {
-	var esc = this.escortService.getData();
+	var esc = this.escortService.getEscortList();
 	esc.snapshotChanges().subscribe(item => {
 		this.escortList = [];
 		item.forEach(element => {
@@ -22,7 +22,6 @@ export class OfficerActiveEscortsComponent implements OnInit {
 			y["$key"] = element.key;
 			var currentEscort = (y as Escort);
 			if(currentEscort.status != 'Completed'){
-                console.log("escort-list -> ngOnInit() : currentEscort.status = " + currentEscort.status);
 				this.escortList.push(currentEscort);
 			}
 		});

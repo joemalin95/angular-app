@@ -1,45 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 
-import { RideService } from '../services/ride/ride.service';
+import { EscortService } from '../services/escort/escort.service';
 import { Escort } from '../data/escort.data';
 
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',
-  providers: [RideService, AngularFireDatabase]
+  providers: [EscortService, AngularFireDatabase]
 })
 
 export class ReviewComponent implements OnInit {
 
+    // Set headers for data table
+    public headerRow: string[] = [
+        'Driver', 
+        'Pickup',
+        'Dropoff',
+        'Passengers',
+        'Start Time',
+        'Completed Time',
+        'No Show',
+    ];
 
-    public headerRow: string[];
-    public filterStatuses: string[];
-    public rides: FirebaseListObservable<Escort[]>;
+    // filter out assigned and unassigned rides to only 
+    // show completed rides
+    public filterStatuses: string[] = [ "assigned", "unassigned" ];
+    public rides: AngularFireList<any>;
     public pageNum: number = 0;
 
-    constructor(private rideService: RideService) { }
+    constructor(private rideService: EscortService) { }
 
     ngOnInit() {
-
         // Get rides from ride service
-        this.rides = this.rideService.getRidesList({});
-
-        // Set headers for data table
-        this.headerRow = [ 
-            'Driver', 
-            'Pickup',
-            'Dropoff',
-            'Passengers',
-            'Start Time',
-            'Completed Time',
-            'No Show',
-        ];
-
-        // filter out assigned and unassigned rides to only 
-        // show completed rides
-        this.filterStatuses = [ "assigned", "unassigned" ];
+        this.rides = this.rideService.getEscortList();
     }
 }

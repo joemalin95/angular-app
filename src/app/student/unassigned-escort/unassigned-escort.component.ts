@@ -19,7 +19,7 @@ export class UnassignedEscortComponent implements OnInit {
 
     ngOnInit() {
 
-        var esc = this.escortService.getData();
+        var esc = this.escortService.getEscortList();
         esc.snapshotChanges().subscribe(item => {
 
             this.escortListUnassigned = [];
