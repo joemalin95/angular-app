@@ -40,7 +40,14 @@ export class StudentCreateEscortComponent implements OnInit {
   
     @Output() myEvent = new EventEmitter<object>();
 
-    onSubmit(escortForm: NgForm){
+    onSubmit(escortForm: NgForm) {
+
+        var pickup_id = escortForm.value.pickup;
+        var dropoff_id = escortForm.value.dropoff;
+
+        escortForm.value.pickup = this.getLocationName(pickup_id);
+        escortForm.value.dropoff = this.getLocationName(dropoff_id);
+
         this.escortService.newEscort(escortForm.value);
     }
 
@@ -56,10 +63,7 @@ export class StudentCreateEscortComponent implements OnInit {
         this.myEvent.emit(this.dir)
     }
 
-    //    
-    //        updateDestination(dest : Location) {
-    //           this.map.setDestination(dest); 
-    //        }
-    
-
+    getLocationName(id : number) {
+        return this.locations.filter((loc) => loc['id'] === id )[0]['label'];
+    }
 }
