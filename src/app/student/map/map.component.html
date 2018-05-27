@@ -1,0 +1,3 @@
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" gestureHandling="none">
+  <agm-direction *ngIf="dir.orgin || dir.destination" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
+</agm-map>

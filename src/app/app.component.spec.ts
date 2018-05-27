@@ -15,7 +15,6 @@ import { AppComponent } from './app.component';
 
 import { SidebarModule } from './sidebar/sidebar.module';
 import { NavbarModule} from './navbar/navbar.module';
-import { NguiMapModule} from '@ngui/map';
 
 import { DispatchComponent }   from './dispatch/dispatch.component';
 import { ReviewComponent } from './review/review.component';
@@ -64,7 +63,6 @@ describe('AppComponent', () => {
             RouterTestingModule,
             SidebarModule,
             NavbarModule,
-            NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyA_PdrWE6CaIq-j0HbaiZrvnOQEUuveTI8'}),
             AngularFireModule.initializeApp(environment.firebaseConfig),
             AngularFireDatabaseModule,
             FormsModule,

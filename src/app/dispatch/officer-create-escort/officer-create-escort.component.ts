@@ -13,7 +13,7 @@ import { DePaulData } from '../../data/depaul.data';
 export class OfficerCreateEscortComponent implements OnInit {
 
     public drivers: Array<string>; 
-    public locations: Array<string>; 
+    public locations: Array<object>; 
     public passengers: Array<string>; 
 
     constructor(

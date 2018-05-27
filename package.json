@@ -12,17 +12,19 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "4.4.4",
-    "@angular/common": "4.4.4",
-    "@angular/compiler": "4.4.4",
-    "@angular/core": "4.4.4",
-    "@angular/forms": "4.4.4",
-    "@angular/http": "4.4.4",
-    "@angular/platform-browser": "4.4.4",
-    "@angular/platform-browser-dynamic": "4.4.4",
-    "@angular/router": "4.4.4",
+    "@agm/core": "1.0.0-beta.3",
+    "@angular/animations": ">5.00 < 6.00",
+    "@angular/common": ">5.00 < 6.00",
+    "@angular/compiler": ">5.00 < 6.00",
+    "@angular/core": ">5.00 < 6.00",
+    "@angular/forms": ">5.00 < 6.00",
+    "@angular/http": ">5.00 < 6.00",
+    "@angular/platform-browser": ">5.00 < 6.00",
+    "@angular/platform-browser-dynamic": ">5.00 < 6.00",
+    "@angular/router": ">5.00 < 6.00",
     "@ngui/map": "0.18.3",
     "@types/googlemaps": "3.26.14",
+    "agm-direction": "0.5.4",
     "angularfire2": "5.0.0-rc.3",
     "arrive": "2.3.1",
     "bootstrap": "3.3.5",
@@ -38,13 +40,13 @@
     "moment": "2.18.1",
     "ngx-pagination": "^3.1.1",
     "npm": "^6.0.0",
-    "rxjs": "5.4.2",
+    "rxjs": "^5.5.0",
     "typings": "^2.1.1",
     "zone.js": "0.8.4"
   },
   "devDependencies": {
     "@angular/cli": "^1.7.4",
-    "@angular/compiler-cli": "4.4.4",
+    "@angular/compiler-cli": ">5.00 < 6.00",
     "@types/bootstrap": "3.3.32",
     "@types/chartist": "0.9.34",
     "@types/d3": "^5.0.0",
@@ -66,6 +68,6 @@
     "puppeteer": "^1.4.0",
     "ts-node": "2.0.0",
     "tslint": "4.5.0",
-    "typescript": "2.3.4"
+    "typescript": ">=2.4.2 <2.7"
   }
 }
