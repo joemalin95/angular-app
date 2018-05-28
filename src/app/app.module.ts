@@ -38,8 +38,9 @@ import { OfficerActiveEscortsComponent } from './dispatch/officer-active-escorts
 
 import {NgxPaginationModule} from 'ngx-pagination';
 import { GraphComponent } from './graph/graph.component';
+import { PickupGraphComponent } from './graph/pickup-graph/pickup-graph.component';
+import { DriverGraphComponent } from './graph/driver-graph/driver-graph.component';
 import { MapComponent } from './student/map/map.component';
-
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
 
@@ -59,6 +60,8 @@ import { AgmDirectionModule } from 'agm-direction';
     OfficerCreateEscortComponent,
     OfficerActiveEscortsComponent,
     GraphComponent,
+    PickupGraphComponent,
+    DriverGraphComponent,
     MapComponent,
   ],
   imports: [
