@@ -11,7 +11,6 @@ import { axisBottom, axisLeft, select, max, scaleBand, scaleLinear } from 'd3';
 @Component({
   selector: 'app-driver-graph',
   templateUrl: './driver-graph.component.html',
-  styleUrls: ['./driver-graph.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class DriverGraphComponent implements OnInit {

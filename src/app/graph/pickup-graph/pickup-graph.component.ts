@@ -11,7 +11,6 @@ import { axisBottom, axisLeft, select, max, scaleBand, scaleLinear} from 'd3';
 @Component({
   selector: 'app-pickup-graph',
   templateUrl: './pickup-graph.component.html',
-  styleUrls: ['./pickup-graph.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class PickupGraphComponent implements OnInit {
