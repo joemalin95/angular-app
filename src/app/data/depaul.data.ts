@@ -15,7 +15,7 @@ export class DePaulData {
     
     public static locations = [
         { id: 1, label: '990 W. Fullerton', lat: 41.925865, lng: -87.653223 },
-        { id: 2, label: '2400 W. Fullerton', lat: 41.925336, lng: -87.687917 },
+        { id: 2, label: '2400 N Sheffield', lat: 41.925636, lng: -87.654942 },
         { id: 3, label: 'Arts and Letters', lat: 41.924383, lng: -87.654534 },
         { id: 5, label: 'ATC (Sullivan Athletic Center)', lat: 41.924236, lng: -87.653163 },
         { id: 6, label: 'Belden/Racine Hall', lat: 41.924350, lng: -87.658127 },

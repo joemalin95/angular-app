@@ -4,15 +4,16 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../../../environments/environment';
 import { EscortService } from '../../services/escort/escort.service';
-import { AssignedEscortComponent } from './assigned-escort.component';
 
-describe('AssignedEscortComponent', () => {
-  let component: AssignedEscortComponent;
-  let fixture: ComponentFixture<AssignedEscortComponent>;
+import { ActiveEscortsComponent } from './active-escorts.component';
+
+describe('ActiveEscortsComponent', () => {
+  let component: ActiveEscortsComponent;
+  let fixture: ComponentFixture<ActiveEscortsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        declarations: [ AssignedEscortComponent ],
+        declarations: [ ActiveEscortsComponent ],
         providers: [
             EscortService,
         ],
@@ -25,7 +26,7 @@ describe('AssignedEscortComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AssignedEscortComponent);
+    fixture = TestBed.createComponent(ActiveEscortsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
