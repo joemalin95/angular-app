@@ -6,7 +6,7 @@ import { EscortService } from '../../services/escort/escort.service';
 import { Escort } from '../../data/escort.data';
 import { DePaulData } from '../../data/depaul.data';
 import { Building } from './building';
-import * as d3 from 'd3';
+import { axisBottom, axisLeft, select, max, scaleBand, scaleLinear} from 'd3';
 
 @Component({
   selector: 'app-pickup-graph',
@@ -26,7 +26,7 @@ export class PickupGraphComponent implements OnInit {
     }
         
     getData(){
-        var esc = this.escortService.getData();
+        var esc = this.escortService.getEscortList();
         esc.snapshotChanges().subscribe(item => {
             const newEscortList = [];
             item.forEach(element => {
@@ -53,7 +53,7 @@ export class PickupGraphComponent implements OnInit {
         var buildingTally : Building[] = [];
                 
         for(let location of DePaulData.locations)
-            buildingTally.push(new Building(location, 0));
+            buildingTally.push(new Building(location.label, 0));
                 
         item.forEach(element => {    
             for(let b of buildingTally)
@@ -70,7 +70,7 @@ export class PickupGraphComponent implements OnInit {
         let width = 960 - margin.left - margin.right;
         let height = 600 - margin.top - margin.bottom;
 
-        let svg = d3.select(this.element.nativeElement).append('svg')
+        let svg = select(this.element.nativeElement).append('svg')
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
             .style('background-color', '#efefef');
@@ -80,21 +80,21 @@ export class PickupGraphComponent implements OnInit {
             .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
         let xDomain = buildingTally.map(d => d.building);
-        let yDomain = [0, d3.max(buildingTally, d=> d.pickupNum)];
+        let yDomain = [0, max(buildingTally, d=> d.pickupNum)];
         
-        let x = d3.scaleBand()
+        let x = scaleBand()
             .domain(xDomain)
             .rangeRound([0, width])
             .padding(0.2);
 
-        let y = d3.scaleLinear()
+        let y = scaleLinear()
             .domain(yDomain)
             .range([height, 0]);
 
         svg.append("g")
             .attr('class', 'x axis')
             .attr('transform', `translate(${margin.left}, ${margin.top + height})`)
-            .call(d3.axisBottom(x))
+            .call(axisBottom(x))
             .selectAll("text")
             .style("text-anchor", "end")
             .attr("dx", "-.8em")
@@ -104,7 +104,7 @@ export class PickupGraphComponent implements OnInit {
         svg.append("g")
             .attr('class', 'y axis')
             .attr('transform', `translate(${margin.left}, ${margin.top})`)
-            .call(d3.axisLeft(y));
+            .call(axisLeft(y));
 
         svg.selectAll("bar")
             .data(buildingTally)

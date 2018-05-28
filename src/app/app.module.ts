@@ -14,7 +14,6 @@ import { AppRoutes } from './app.routing';
 
 import { SidebarModule } from './sidebar/sidebar.module';
 import { NavbarModule} from './navbar/navbar.module';
-import { NguiMapModule} from '@ngui/map';
 
 import { DispatchComponent }   from './dispatch/dispatch.component';
 import { ReviewComponent } from './review/review.component';
@@ -27,7 +26,6 @@ import { ReversePipe} from './pipes/reverse.pipes';
 import { LoginComponent } from './login/login.component';
 
 import { AuthService } from './services/auth/auth.service';
-import { RideService } from './services/ride/ride.service';
 import { EscortService } from './services/escort/escort.service';
 import { AuthGuard, OfficerAuthGuard } from './services/auth/auth-guard.service';
 import { StudentComponent } from './student/student.component';
@@ -42,6 +40,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { GraphComponent } from './graph/graph.component';
 import { PickupGraphComponent } from './graph/pickup-graph/pickup-graph.component';
 import { DriverGraphComponent } from './graph/driver-graph/driver-graph.component';
+import { MapComponent } from './student/map/map.component';
+import { AgmCoreModule } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction';
 
 @NgModule({
   declarations: [
@@ -61,17 +62,21 @@ import { DriverGraphComponent } from './graph/driver-graph/driver-graph.componen
     GraphComponent,
     PickupGraphComponent,
     DriverGraphComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(AppRoutes),
     SidebarModule,
     NavbarModule,
-    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyA_PdrWE6CaIq-j0HbaiZrvnOQEUuveTI8'}),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     FormsModule,
     NgxPaginationModule,
+    AgmCoreModule.forRoot({
+        apiKey: 'AIzaSyDFTKbcSXEN22pUx3zfaabEOGyy7oOZtmI'
+    }),
+    AgmDirectionModule,
   ],
   providers: [
       AuthService,

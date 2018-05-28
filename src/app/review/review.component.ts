@@ -3,43 +3,38 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 
-import { RideService } from '../services/ride/ride.service';
+import { EscortObservableService } from '../services/escort/escort-observable.service';
 import { Escort } from '../data/escort.data';
 
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',
-  providers: [RideService, AngularFireDatabase]
+  providers: [EscortObservableService, AngularFireDatabase]
 })
 
 export class ReviewComponent implements OnInit {
 
+    // Set headers for data table
+    public headerRow: string[] = [
+        'Driver', 
+        'Pickup',
+        'Dropoff',
+        'Passengers',
+        'Start Time',
+        'Completed Time',
+        'No Show',
+    ];
 
-    public headerRow: string[];
-    public filterStatuses: string[];
-    public rides: FirebaseListObservable<Escort[]>;
+    // filter out assigned and unassigned escorts to only 
+    // show completed escorts
+    public filterStatuses: string[] = [ "assigned", "unassigned" ];
+    public escortList: FirebaseListObservable<Escort[]>;
     public pageNum: number = 0;
 
-    constructor(private rideService: RideService) { }
+    constructor(private escortObservableService: EscortObservableService) { }
 
     ngOnInit() {
-
-        // Get rides from ride service
-        this.rides = this.rideService.getRidesList({});
-
-        // Set headers for data table
-        this.headerRow = [ 
-            'Driver', 
-            'Pickup',
-            'Dropoff',
-            'Passengers',
-            'Start Time',
-            'Completed Time',
-            'No Show',
-        ];
-
-        // filter out assigned and unassigned rides to only 
-        // show completed rides
-        this.filterStatuses = [ "assigned", "unassigned" ];
+        // Get escortList from escort observable service
+        this.escortList = this.escortObservableService.getEscortObservableList();
     }
 }

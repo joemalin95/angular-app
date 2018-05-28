@@ -1,5 +1,3 @@
-<meta name="google-signin-client_id" content="471261646647-pmod5p08ldkguvpvrd0qb782op08i43k.apps.googleusercontent.com">
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -16,29 +14,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor=" let ride of rides 
+                            <tr class="review-row" *ngFor=" let escort of escortList 
                                         | async 
                                         | reverse 
                                         | mySearch : filterStatuses  
                                         | paginate : { itemsPerPage: 5, currentPage: pageNum } "
                             >
-                                <td>{{ride.driver}}</td>
-                                <td>{{ride.pickup}}</td>
-                                <td>{{ride.dropoff}}</td>
-                                <td>{{ride.passengers}}</td>
-                                <td>{{ride.created | date : 'MMM d, h:mm a'}}</td>
-                                <td>{{ride.finished | date : 'MMM d, h:mm a'}}</td>
-                                <td *ngIf="ride.no_show">True</td>
-                                <td *ngIf="!ride.no_show">False</td>
+                                <td>{{escort.driver}}</td>
+                                <td>{{escort.pickup}}</td>
+                                <td>{{escort.dropoff}}</td>
+                                <td>{{escort.passengers}}</td>
+                                <td>{{escort.created | date : 'MMM d, h:mm a'}}</td>
+                                <td>{{escort.finished | date : 'MMM d, h:mm a'}}</td>
+                                <td *ngIf="escort.no_show">True</td>
+                                <td *ngIf="!escort.no_show">False</td>
                             </tr>
                         </tbody>
                     </table>
                         <pagination-controls 
                             class="escort-completed-pagination" 
                             (pageChange)="pageNum = $event"
-                        >
-                        </pagination-controls>
-
+                        ></pagination-controls>
                 </div>
             </div>
         </div>
