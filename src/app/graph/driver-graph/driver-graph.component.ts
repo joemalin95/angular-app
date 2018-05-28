@@ -76,7 +76,7 @@ export class DriverGraphComponent implements OnInit {
             let svg = select(this.element.nativeElement).append('svg')
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
-            .style('background-color', '#efefef');
+            .style('background-color', '#fff');
             
             let chart = svg.append("g")
             .attr('class', 'bar')
