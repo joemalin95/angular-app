@@ -20,6 +20,7 @@ export class AuthGuard implements CanActivate {
 export class OfficerAuthGuard implements CanActivate {
 
     private officerEmails: Array<String> = [
+        "officer@example.com",
         "joemalin95@gmail.com",
         "benjaminehuff@gmail.com"
     ];
