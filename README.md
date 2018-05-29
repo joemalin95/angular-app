@@ -39,4 +39,4 @@ run `npm run-script ng serve` and visit http://localhost:4200
 
 ## Authors
 
-Joey Malinowski, Ben Huff
+Joey Malinowski & Ben Huff
