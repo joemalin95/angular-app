@@ -34,6 +34,12 @@
     -webkit-animation-delay: -0.16s;
     animation-delay: -0.16s;
 }
+.loader-text {
+    font-size: 45px;
+    position: absolute;
+    left: -1.55em;
+    top: -1.7em;
+}
 .loader:before,
 .loader:after {
   content: '';

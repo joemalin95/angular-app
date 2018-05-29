@@ -25,4 +25,3 @@ export class EscortObservableService {
         return this.escort;
     }
 }
-

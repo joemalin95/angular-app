@@ -20,22 +20,32 @@ export class PickupGraphComponent implements OnInit {
     constructor(private escortService : EscortService, private element: ElementRef){} 
 
     ngOnInit(){
-        this.getData();
+        this.getCompletedEscorts();
         this.generateBarGraph();
     }
         
-    getData(){
+    getCompletedEscorts(){
+
         var esc = this.escortService.getEscortList();
+
+        // update escort list when changes occur
         esc.snapshotChanges().subscribe(item => {
+
             const newEscortList = [];
+
+            // filter completed escorts from list 
             item.forEach(element => {
+
                 var y = element.payload.toJSON();
                 y["$key"] = element.key;
+
                 var currentEscort = (y as Escort);
+
                 if(currentEscort.status == 'Completed'){
 				    newEscortList.push(currentEscort);
 			     }
             });
+
             this.escortList.next(newEscortList);
 	   });
     } 
