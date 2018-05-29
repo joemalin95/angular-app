@@ -29,9 +29,12 @@ run `npm run-script ng serve` and visit http://localhost:4200
 
 ## Built With
 
-* [Material Dashboard Angular2](https://www.creative-tim.com/product/material-dashboard-angular2) - Angular2 Template
+* [Paper Dashboard Angular](https://www.creative-tim.com/product/paper-dashboard-angular) - Angular Template
 * [Firebase](https://firebase.google.com/) - Firebase Database
-* [AngularFire](https://github.com/angular/angularfire2) - Firebase-Angular Library
+* [AngularFire2](https://github.com/angular/angularfire2) - Firebase-Angular Library
+* [Google Maps](https://developers.google.com/maps/documentation/javascript/tutorial)
+* [D3](https://d3js.org/)
+* [Firebase Authentication](https://github.com/hellotunmbi/angular2-authentication-firebase)
 * [ngx-pagination](https://github.com/michaelbromley/ngx-pagination) - Pagination Library
 
 ## Authors
