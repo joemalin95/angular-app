@@ -34,9 +34,11 @@ import { StudentComponent } from './student/student.component'
 import { OfficerCreateEscortComponent } from './dispatch/officer-create-escort/officer-create-escort.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { StudentCreateEscortComponent } from './student/student-create-escort/student-create-escort.component';
-import { AssignedEscortComponent } from './student/assigned-escort/assigned-escort.component';
-import { UnassignedEscortComponent } from './student/unassigned-escort/unassigned-escort.component';
+import { ActiveEscortsComponent } from './student/active-escorts/active-escorts.component';
 import { OfficerActiveEscortsComponent } from './dispatch/officer-active-escorts/officer-active-escorts.component';
+import { MapComponent } from './student/map/map.component';
+import { AgmCoreModule } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 
@@ -54,9 +56,9 @@ describe('AppComponent', () => {
             OfficerCreateEscortComponent,
             MainLayoutComponent,
             StudentCreateEscortComponent,
-            AssignedEscortComponent,
-            UnassignedEscortComponent,
-            OfficerActiveEscortsComponent
+            ActiveEscortsComponent,
+            OfficerActiveEscortsComponent,
+            MapComponent,
           ],
           imports: [
             BrowserModule,
@@ -67,6 +69,8 @@ describe('AppComponent', () => {
             AngularFireDatabaseModule,
             FormsModule,
             NgxPaginationModule,
+            AgmCoreModule,
+            AgmDirectionModule,
           ],
           providers: [
               AuthService,
