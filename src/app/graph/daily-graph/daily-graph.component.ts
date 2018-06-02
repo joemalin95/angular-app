@@ -1,55 +1,45 @@
 import { Component, OnInit, OnChanges, ViewChild, ElementRef, Input, ViewEncapsulation } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import {Observable} from 'rxjs/Rx';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 import { EscortService } from '../../services/escort/escort.service';
 import { Escort } from '../../data/escort.data';
+import { DailyEscort } from '../../data/daily-escort';
 import { DePaulData } from '../../data/depaul.data';
-import { Building } from '../../data/building';
-import { axisBottom, axisLeft, select, max, scaleBand, scaleLinear} from 'd3';
+import { axisBottom, axisLeft, select, max, scaleBand, scaleLinear } from 'd3';
 
 @Component({
-  selector: 'app-pickup-graph',
-  templateUrl: './pickup-graph.component.html',
+  selector: 'app-daily-graph',
+  templateUrl: './daily-graph.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class PickupGraphComponent implements OnInit {
+export class DailyGraphComponent implements OnInit {
 
-    private escortList = new ReplaySubject<Escort[]>();
+  private escortList = new ReplaySubject<Escort[]>();
 
     constructor(private escortService : EscortService, private element: ElementRef){} 
 
     ngOnInit(){
-        this.getCompletedEscorts();
+        this.getData();
         this.generateBarGraph();
     }
         
-    getCompletedEscorts(){
-
+    getData(){
         var esc = this.escortService.getEscortList();
-
-        // update escort list when changes occur
         esc.snapshotChanges().subscribe(item => {
-
             const newEscortList = [];
-
-            // filter completed escorts from list 
             item.forEach(element => {
-
                 var y = element.payload.toJSON();
                 y["$key"] = element.key;
-
                 var currentEscort = (y as Escort);
-
                 if(currentEscort.status == 'Completed'){
 				    newEscortList.push(currentEscort);
 			     }
             });
-
             this.escortList.next(newEscortList);
 	   });
     } 
-        
+    
     getEscortList() : Observable<Escort[]> {
         return this.escortList.asObservable();    
     }
@@ -59,22 +49,31 @@ export class PickupGraphComponent implements OnInit {
         var esc = this.getEscortList();
         esc.subscribe(item => {
                  
-        var buildingTally : Building[] = [];
+            var dayTally = new Map<string, number>();
+            var dayArray : DailyEscort[] = [];
+            
+            item.forEach(element => {  
+            
+                var elementDate = new Date(element.created).toDateString();
                 
-        for(let location of DePaulData.locations)
-            buildingTally.push(new Building(location.label, 0));
+                if(!dayTally.has(elementDate))
+                    dayTally.set(elementDate, 1);
+                else {
+                    var tempCount = dayTally.get(elementDate) + 1;
+                    dayTally.set(elementDate, tempCount);
+                }
                 
-        item.forEach(element => {    
-            for(let b of buildingTally)
-                        if(b.building == element.pickup)
-                            b.pickupNum++;
+                dayTally.forEach(function(value, key) {
+                    dayArray.push(new DailyEscort(key, value));
                 });
-            this.makeD3BarGraph(buildingTally);
-        });
-	}
+                
+            });
+            this.makeD3BarGraph(dayArray);
+	   });
+    }
 
-    makeD3BarGraph(buildingTally : Building[]){
-    
+    makeD3BarGraph(dayArray : DailyEscort[]){
+
         let margin = {top: 5, right: 20, bottom: 160, left:30};
         let width = 960 - margin.left - margin.right;
         let height = 600 - margin.top - margin.bottom;
@@ -88,8 +87,8 @@ export class PickupGraphComponent implements OnInit {
             .attr('class', 'bar')
             .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
-        let xDomain = buildingTally.map(d => d.building);
-        let yDomain = [0, max(buildingTally, d=> d.pickupNum)];
+        let xDomain = dayArray.map(d => d.date);
+        let yDomain = [0, max(dayArray, d=> d.numEscorts)];
         
         let x = scaleBand()
             .domain(xDomain)
@@ -116,13 +115,14 @@ export class PickupGraphComponent implements OnInit {
             .call(axisLeft(y));
 
         svg.selectAll("bar")
-            .data(buildingTally)
+            .data(dayArray)
             .enter().append("rect")
             .attr("class", "bar")
-            .attr("x", function(d) { return margin.left + x(d.building) ; })
+            .attr("x", function(d) { return margin.left + x(d.date) ; })
             .attr("width", x.bandwidth)
-            .attr("y", function(d) { return y(d.pickupNum); })
-            .attr("height", function(d) { return height - y(d.pickupNum); });
-
+            .attr("y", function(d) { return y(d.numEscorts); })
+            .attr("height", function(d) { return height - y(d.numEscorts); });
+            
     }
+    
 }

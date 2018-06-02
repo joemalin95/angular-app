@@ -5,7 +5,7 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { EscortService } from '../../services/escort/escort.service';
 import { Escort } from '../../data/escort.data';
 import { DePaulData } from '../../data/depaul.data';
-import { Driver } from './driver';
+import { Driver } from '../../data/driver';
 import { axisBottom, axisLeft, select, max, scaleBand, scaleLinear } from 'd3';
 
 @Component({
