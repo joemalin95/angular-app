@@ -25,7 +25,11 @@ run `npm run-script ng serve` and visit http://localhost:4200
 
 ## Running the Tests
 
-`npm run-script ng test`
+*NOTE* `Chrome` browser is required to test this app
+
+1. `npm run-script ng test`
+2. open http://localhost:9876/ in Chrome
+3. click on "Debug" in the Karma tab
 
 ## Built With
 
