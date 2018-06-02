@@ -32,7 +32,7 @@ export class OfficerCreateEscortComponent implements OnInit {
 	       this.escortService.newEscort(escortForm.value);
 	   else 
 	       this.escortService.updateEscort(escortForm.value.$key, escortForm.value);
-           this.resetForm(escortForm);
+           this.resetForm(escortForm); 
     }
 
     resetForm(escortForm? : NgForm){

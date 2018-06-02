@@ -43,6 +43,7 @@ import { DriverGraphComponent } from './graph/driver-graph/driver-graph.componen
 import { MapComponent } from './student/map/map.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
+import { EscortsDailyGraphComponent } from './graph/escorts-daily-graph/escorts-daily-graph.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { AgmDirectionModule } from 'agm-direction';
     PickupGraphComponent,
     DriverGraphComponent,
     MapComponent,
+    EscortsDailyGraphComponent,
   ],
   imports: [
     BrowserModule,
