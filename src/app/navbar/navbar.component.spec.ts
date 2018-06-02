@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
 
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -16,37 +17,54 @@ import { AuthService } from '../services/auth/auth.service';
 import { OfficerAuthGuard } from '../services/auth/auth-guard.service';
 
 describe('NavbarComponent', () => {
-  let component: NavbarComponent;
-  let fixture: ComponentFixture<NavbarComponent>;
+    let component: NavbarComponent;
+    let fixture: ComponentFixture<NavbarComponent>;
+    let de: DebugElement;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-        declarations: [ 
-            NavbarComponent,
-        ],
-        imports: [
-            AngularFireModule.initializeApp(environment.firebaseConfig),
-            AngularFireDatabaseModule,
-            FormsModule,
-            RouterTestingModule,
-        ],
-        providers: [
-            EscortService,
-            AngularFireAuth,
-            OfficerAuthGuard,
-            AuthService
-        ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [ 
+                NavbarComponent,
+            ],
+            imports: [
+                AngularFireModule.initializeApp(environment.firebaseConfig),
+                AngularFireDatabaseModule,
+                FormsModule,
+                RouterTestingModule,
+            ],
+            providers: [
+                EscortService,
+                AngularFireAuth,
+                OfficerAuthGuard,
+                AuthService
+            ]
+        }).compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(NavbarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(NavbarComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
+
+    it('should get title of page', () => {
+        expect(component.getTitle()).toEqual('DePaul Safety Escort Service');
+    });
+
+    it('should toggle sidebar on', () => {
+        component.sidebarVisible = false;
+        component.sidebarToggle();
+        expect(component.sidebarVisible).toBe(true);
+    });
+
+    it('should toggle sidebar off', () => {
+        component.sidebarVisible = true;
+        component.sidebarToggle();
+        expect(component.sidebarVisible).toBe(false);
+    });
+
 });

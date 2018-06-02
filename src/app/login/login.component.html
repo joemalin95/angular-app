@@ -1,14 +1,73 @@
 <div class="login-panel">
     <div class="content">
         <h1>
-            DePaul Public Safety Escort Login
+            Public Safety Escort Login
         </h1>
         <div class="login-wrapper">
             <div class="login-container">
+
+                <!-- Header -->
+                <div class="login-logo">
+                    <a class="simple-text">
+                        <div class="logo-img">
+                            <img class="login-logo-img" src="../../assets/img/depaul-logo2.png" alt="">
+                        </div>
+                    </a>
+                </div>
+
+                <form name="userform" method="post" #formCtrl="ngForm">
+                    <div class="form-group">
+                        <label for="inputEmail">DePaul Email Address</label>
+                        <input name="email" type="email" class="form-control" [(ngModel)]="user.email" placeholder="Email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <input name="password" type="password" class="form-control" [(ngModel)]="user.password" placeholder="Password" required>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                       <button type="buton" class="btn btn-primary btn-block" style="margin-bottom: 20px" (click)="signInWithEmail()" [disabled]="formCtrl.form.invalid">
+                       Login with DePaul Email
+                       </button>
+                    </div>
+                </form>
                 <button type="button" class="login-button btn btn-block" (click)="signInWithGoogle()">
                       <i class="fa fa-google" aria-hidden="true"></i>
                       Login with Google
                 </button>
+                <div class="login-notice">
+                    <div class="notice-header">Note</div>
+                    <div class="notice-description">
+                        For demo purposes use the following: 
+                    </div>
+                    <div class="notice-block">
+                        <b>Officer View</b>
+                        <div class="notice-block-body">
+                            <div>
+                                email:
+                                <strong>officer@example.com</strong>
+                            </div>
+                            <div>
+                                password:
+                                <strong>webdev</strong>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="notice-block">
+                        <b>Student View</b>
+                        <div class="notice-block-body">
+                            <div>
+                                email:
+                                <strong>student@example.com</strong>
+                            </div>
+                            <div>
+                                password:
+                                <strong>webdev</strong>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

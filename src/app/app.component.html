@@ -1,5 +1,9 @@
 <router-outlet>
     <div [ngClass]="{'loader-container': true, 'active': !isInitialized()}">
-        <div class="loader"></div>
+        <div class="loader">
+            <div class="loader-text">
+                Loading
+            </div>
+        </div>
     </div>
 </router-outlet>

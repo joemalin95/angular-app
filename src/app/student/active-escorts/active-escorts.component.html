@@ -4,7 +4,7 @@
         <th>Dropoff</th>
         <th>Time</th>
     </tr>
-    <tr *ngFor="let escort of escortListUnassigned" class="warning">
+    <tr *ngFor="let escort of activeEscortList" [ngClass]="{'active-escort-row': true, 'success': escort.status == 'Assigned', 'warning': escort.status == 'Unassigned'}" >
         <td>{{escort.pickup}}</td>
         <td>{{escort.dropoff}}</td>
         <td>{{escort.created | date : 'h:mm a' }}</td>

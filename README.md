@@ -8,7 +8,7 @@ A live demo of this application can be found here: http://angular.malinowski.stu
 
 ## Installation
 
-*NOTE* `npm` is required to install this app
+*Note: `npm` is required to install this app*
 
 To install this app, run these commands:
 
@@ -21,19 +21,29 @@ npm run-script ng build
 ```
 ## Serving the App
 
-run `npm run-script ng serve` and visit http://localhost:4200
+*Note: If there are any problems with serving, check out the app at http://angular.malinowski.studio/*
+
+1. run `npm run-script ng serve`
+2. visit http://localhost:4200
 
 ## Running the Tests
 
-`npm run-script ng test`
+*Note: Chrome browser is required to test this app*
+
+1. `npm run-script ng test`
+2. open http://localhost:9876/ in Chrome
+3. click on "Debug" in the Karma tab (this may take a few moments to begin)
 
 ## Built With
 
-* [Material Dashboard Angular2](https://www.creative-tim.com/product/material-dashboard-angular2) - Angular2 Template
+* [Paper Dashboard Angular](https://www.creative-tim.com/product/paper-dashboard-angular) - Angular Template
 * [Firebase](https://firebase.google.com/) - Firebase Database
-* [AngularFire](https://github.com/angular/angularfire2) - Firebase-Angular Library
+* [AngularFire2](https://github.com/angular/angularfire2) - Firebase-Angular Library
+* [Google Maps](https://developers.google.com/maps/documentation/javascript/tutorial) - Maps and directions
+* [D3](https://d3js.org/) - Graphing library
+* [Firebase Authentication](https://github.com/hellotunmbi/angular2-authentication-firebase) - Google and Email sign in
 * [ngx-pagination](https://github.com/michaelbromley/ngx-pagination) - Pagination Library
 
 ## Authors
 
-Joey Malinowski, Ben Huff
+Joey Malinowski & Ben Huff

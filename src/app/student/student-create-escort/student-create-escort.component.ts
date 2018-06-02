@@ -14,7 +14,6 @@ interface Location {
 @Component({
   selector: 'app-student-create-escort',
   templateUrl: './student-create-escort.component.html',
-  styleUrls: ['./student-create-escort.component.scss']
 })
 export class StudentCreateEscortComponent implements OnInit {
 

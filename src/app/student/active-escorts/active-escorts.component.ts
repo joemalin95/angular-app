@@ -3,14 +3,14 @@ import { EscortService } from '../../services/escort/escort.service';
 import { Escort } from '../../data/escort.data';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
-@Component({
-  selector: 'app-unassigned-escort',
-  templateUrl: './unassigned-escort.component.html',
-  styleUrls: ['./unassigned-escort.component.scss']
-})
-export class UnassignedEscortComponent implements OnInit {
 
-    escortListUnassigned : Escort[];
+@Component({
+  selector: 'app-active-escorts',
+  templateUrl: './active-escorts.component.html',
+})
+export class ActiveEscortsComponent implements OnInit {
+
+    activeEscortList : Escort[];
 
     constructor(
         private escortService : EscortService, 
@@ -18,20 +18,20 @@ export class UnassignedEscortComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-
         var esc = this.escortService.getEscortList();
         esc.snapshotChanges().subscribe(item => {
 
-            this.escortListUnassigned = [];
+            this.activeEscortList = [];
             item.forEach(element => {
 
                 var y = element.payload.toJSON();
                 y["$key"] = element.key;
                 var currentEscort = (y as Escort);
-                if(currentEscort.status == 'Unassigned'){
-                    this.escortListUnassigned.push(currentEscort);
+                if(currentEscort.status == 'Unassigned' || currentEscort.status == 'Assigned') {
+                    this.activeEscortList.push(currentEscort);
                 }             
             });
         });
     }
+
 }

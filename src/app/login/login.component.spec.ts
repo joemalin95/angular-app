@@ -14,35 +14,51 @@ import { FormsModule }   from '@angular/forms';
 
 
 describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+    let component: LoginComponent;
+    let fixture: ComponentFixture<LoginComponent>;
+    let emptyUser = {
+       email: '',
+       password: ''
+    };
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-        declarations: [ 
-            LoginComponent,
-        ],
-        imports: [
-            AngularFireModule.initializeApp(environment.firebaseConfig),
-            AngularFireDatabaseModule,
-            FormsModule,
-            RouterTestingModule,
-        ],
-        providers: [
-            EscortService,
-            AngularFireAuth,
-        ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [ 
+                LoginComponent,
+            ],
+            imports: [
+                AngularFireModule.initializeApp(environment.firebaseConfig),
+                AngularFireDatabaseModule,
+                FormsModule,
+                RouterTestingModule,
+            ],
+            providers: [
+                EscortService,
+                AngularFireAuth,
+            ]
+        }).compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(LoginComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
+
+    it('should initialize user data', () => {
+        expect(component.user).toEqual(emptyUser);
+    });
+    
+    it('should have signInWithGoogle', () => {
+        // Cannot test Firebase Auth sign in...
+    });
+
+    it('should have signInWithEmail', () => {
+        // Cannot test Firebase Auth sign in...
+    });
+
 });

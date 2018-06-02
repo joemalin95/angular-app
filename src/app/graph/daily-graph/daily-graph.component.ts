@@ -4,17 +4,16 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 import { EscortService } from '../../services/escort/escort.service';
 import { Escort } from '../../data/escort.data';
-import { DailyEscort } from './daily-escort';
+import { DailyEscort } from '../../data/daily-escort';
 import { DePaulData } from '../../data/depaul.data';
 import { axisBottom, axisLeft, select, max, scaleBand, scaleLinear } from 'd3';
 
 @Component({
-  selector: 'app-escorts-daily-graph',
-  templateUrl: './escorts-daily-graph.component.html',
-  styleUrls: ['./escorts-daily-graph.component.scss'],
+  selector: 'app-daily-graph',
+  templateUrl: './daily-graph.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class EscortsDailyGraphComponent implements OnInit {
+export class DailyGraphComponent implements OnInit {
 
   private escortList = new ReplaySubject<Escort[]>();
 
@@ -82,7 +81,7 @@ export class EscortsDailyGraphComponent implements OnInit {
         let svg = select(this.element.nativeElement).append('svg')
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
-            .style('background-color', '#efefef');
+            .style('background-color', '#fff');
             
         let chart = svg.append("g")
             .attr('class', 'bar')

@@ -1,28 +1,46 @@
-<div class="card">
-            <div class="header">
-                <h4 class="title">Escorts per Day</h4>
-                <p class="category">The number of escorts completed each day</p>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Escorts per Day</h4>
+                    <p class="category">The number of escorts completed each day</p>
+                </div>
+                <div class="content graph-content">
+                    <app-daily-graph></app-daily-graph>
+                </div>
             </div>
-            <div class="content">
-                <app-escorts-daily-graph></app-escorts-daily-graph>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Escorts per Driver</h4>
+                    <p class="category">The number of escorts each driver has completed</p>
+                </div>
+                <div class="content graph-content">
+                    <app-driver-graph></app-driver-graph>
+                </div>
             </div>
-</div>
-<div class="card">
-            <div class="header">
-                <h4 class="title">Escorts per Driver</h4>
-                <p class="category">The number of escorts each driver has completed</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Pickups by Building</h4>
+                    <p class="category">The number of pickups at a given building</p>
+                </div>
+                <div class="content graph-content">
+                    <app-pickup-graph></app-pickup-graph>
+                </div>
             </div>
-            <div class="content">
-                <app-driver-graph></app-driver-graph>
-            </div>
-</div>
-<div class="card">
-            <div class="header">
-                <h4 class="title">Pickups by Building</h4>
-                <p class="category">The number of pickups at a given building</p>
-            </div>
-            <div class="content">
-                <app-pickup-graph></app-pickup-graph>
-            </div>
+        </div>
+    </div>
+
 </div>
 

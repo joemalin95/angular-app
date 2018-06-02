@@ -45,7 +45,6 @@ describe('ReviewComponent', () => {
     let component: ReviewComponent;
     let fixture: ComponentFixture<ReviewComponent>;
     let de: DebugElement;
-
     let service: EscortObservableService;
     let spy: jasmine.Spy;
 

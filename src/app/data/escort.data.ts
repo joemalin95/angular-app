@@ -7,4 +7,5 @@ export class Escort {
     no_show : boolean;
     status : string;
     created : string;
+    finished : string;
 }

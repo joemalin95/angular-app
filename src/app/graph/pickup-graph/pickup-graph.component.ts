@@ -5,13 +5,12 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { EscortService } from '../../services/escort/escort.service';
 import { Escort } from '../../data/escort.data';
 import { DePaulData } from '../../data/depaul.data';
-import { Building } from './building';
+import { Building } from '../../data/building';
 import { axisBottom, axisLeft, select, max, scaleBand, scaleLinear} from 'd3';
 
 @Component({
   selector: 'app-pickup-graph',
   templateUrl: './pickup-graph.component.html',
-  styleUrls: ['./pickup-graph.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class PickupGraphComponent implements OnInit {
@@ -21,22 +20,32 @@ export class PickupGraphComponent implements OnInit {
     constructor(private escortService : EscortService, private element: ElementRef){} 
 
     ngOnInit(){
-        this.getData();
+        this.getCompletedEscorts();
         this.generateBarGraph();
     }
         
-    getData(){
+    getCompletedEscorts(){
+
         var esc = this.escortService.getEscortList();
+
+        // update escort list when changes occur
         esc.snapshotChanges().subscribe(item => {
+
             const newEscortList = [];
+
+            // filter completed escorts from list 
             item.forEach(element => {
+
                 var y = element.payload.toJSON();
                 y["$key"] = element.key;
+
                 var currentEscort = (y as Escort);
+
                 if(currentEscort.status == 'Completed'){
 				    newEscortList.push(currentEscort);
 			     }
             });
+
             this.escortList.next(newEscortList);
 	   });
     } 
@@ -73,7 +82,7 @@ export class PickupGraphComponent implements OnInit {
         let svg = select(this.element.nativeElement).append('svg')
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
-            .style('background-color', '#efefef');
+            .style('background-color', '#fff');
             
         let chart = svg.append("g")
             .attr('class', 'bar')

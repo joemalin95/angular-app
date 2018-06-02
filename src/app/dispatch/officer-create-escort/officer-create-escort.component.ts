@@ -48,6 +48,7 @@ export class OfficerCreateEscortComponent implements OnInit {
 		       no_show : false,
 		       status : '',
 		       created : '',
+		       finished : null,
     	   };
 	   }
     }

@@ -31,8 +31,6 @@ import { AuthGuard, OfficerAuthGuard } from './services/auth/auth-guard.service'
 import { StudentComponent } from './student/student.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { StudentCreateEscortComponent } from './student/student-create-escort/student-create-escort.component';
-import { AssignedEscortComponent } from './student/assigned-escort/assigned-escort.component';
-import { UnassignedEscortComponent } from './student/unassigned-escort/unassigned-escort.component';
 import { OfficerCreateEscortComponent } from './dispatch/officer-create-escort/officer-create-escort.component';
 import { OfficerActiveEscortsComponent } from './dispatch/officer-active-escorts/officer-active-escorts.component';
 
@@ -43,7 +41,8 @@ import { DriverGraphComponent } from './graph/driver-graph/driver-graph.componen
 import { MapComponent } from './student/map/map.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
-import { EscortsDailyGraphComponent } from './graph/escorts-daily-graph/escorts-daily-graph.component';
+import { DailyGraphComponent } from './graph/daily-graph/daily-graph.component';
+import { ActiveEscortsComponent } from './student/active-escorts/active-escorts.component';
 
 @NgModule({
   declarations: [
@@ -56,15 +55,14 @@ import { EscortsDailyGraphComponent } from './graph/escorts-daily-graph/escorts-
     StudentComponent,
     MainLayoutComponent,
     StudentCreateEscortComponent,
-    AssignedEscortComponent,
-    UnassignedEscortComponent,
     OfficerCreateEscortComponent,
     OfficerActiveEscortsComponent,
     GraphComponent,
     PickupGraphComponent,
     DriverGraphComponent,
     MapComponent,
-    EscortsDailyGraphComponent,
+    DailyGraphComponent,
+    ActiveEscortsComponent,
   ],
   imports: [
     BrowserModule,

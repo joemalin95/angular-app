@@ -5,13 +5,12 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { EscortService } from '../../services/escort/escort.service';
 import { Escort } from '../../data/escort.data';
 import { DePaulData } from '../../data/depaul.data';
-import { Driver } from './driver';
+import { Driver } from '../../data/driver';
 import { axisBottom, axisLeft, select, max, scaleBand, scaleLinear } from 'd3';
 
 @Component({
   selector: 'app-driver-graph',
   templateUrl: './driver-graph.component.html',
-  styleUrls: ['./driver-graph.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class DriverGraphComponent implements OnInit {
@@ -76,7 +75,7 @@ export class DriverGraphComponent implements OnInit {
             let svg = select(this.element.nativeElement).append('svg')
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
-            .style('background-color', '#efefef');
+            .style('background-color', '#fff');
             
             let chart = svg.append("g")
             .attr('class', 'bar')
