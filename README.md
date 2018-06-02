@@ -8,7 +8,7 @@ A live demo of this application can be found here: http://angular.malinowski.stu
 
 ## Installation
 
-*NOTE* `npm` is required to install this app
+*Note: `npm` is required to install this app*
 
 To install this app, run these commands:
 
@@ -21,14 +21,14 @@ npm run-script ng build
 ```
 ## Serving the App
 
-*NOTE* If there are any problems with serving, check out the app at http://angular.malinowski.studio/
+*Note: If there are any problems with serving, check out the app at http://angular.malinowski.studio/*
 
 1. run `npm run-script ng serve`
 2. visit http://localhost:4200
 
 ## Running the Tests
 
-*NOTE* `Chrome` browser is required to test this app
+*Note: Chrome browser is required to test this app*
 
 1. `npm run-script ng test`
 2. open http://localhost:9876/ in Chrome
