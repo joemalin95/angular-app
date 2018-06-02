@@ -10,7 +10,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class LoginComponent implements OnInit {
 
-    user = {
+    public user = {
        email: '',
        password: ''
     };

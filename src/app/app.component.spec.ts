@@ -1,9 +1,12 @@
-import { TestBed, async } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing'
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule }   from '@angular/forms';
+import { DebugElement } from '@angular/core';
+import { of } from 'rxjs/observable/of';
+import { By } from '@angular/platform-browser';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -43,34 +46,40 @@ import {NgxPaginationModule} from 'ngx-pagination';
 
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+    let component: AppComponent;
+    let fixture: ComponentFixture<AppComponent>;
+    let de: DebugElement;
+    let authService: AuthService;
+    let spy: jasmine.Spy;
+
+    beforeEach(async(() => {
     TestBed.configureTestingModule({
           declarations: [
-            AppComponent,
-            DispatchComponent,
-            ReviewComponent,
-            LoginComponent,
-            FilterPipe,
-            ReversePipe,
-            StudentComponent,
-            OfficerCreateEscortComponent,
-            MainLayoutComponent,
-            StudentCreateEscortComponent,
-            ActiveEscortsComponent,
-            OfficerActiveEscortsComponent,
-            MapComponent,
+              AppComponent,
+              DispatchComponent,
+              ReviewComponent,
+              LoginComponent,
+              FilterPipe,
+              ReversePipe,
+              StudentComponent,
+              OfficerCreateEscortComponent,
+              MainLayoutComponent,
+              StudentCreateEscortComponent,
+              ActiveEscortsComponent,
+              OfficerActiveEscortsComponent,
+              MapComponent,
           ],
           imports: [
-            BrowserModule,
-            RouterTestingModule,
-            SidebarModule,
-            NavbarModule,
-            AngularFireModule.initializeApp(environment.firebaseConfig),
-            AngularFireDatabaseModule,
-            FormsModule,
-            NgxPaginationModule,
-            AgmCoreModule,
-            AgmDirectionModule,
+              BrowserModule,
+              RouterTestingModule,
+              SidebarModule,
+              NavbarModule,
+              AngularFireModule.initializeApp(environment.firebaseConfig),
+              AngularFireDatabaseModule,
+              FormsModule,
+              NgxPaginationModule,
+              AgmCoreModule,
+              AgmDirectionModule,
           ],
           providers: [
               AuthService,
@@ -78,26 +87,49 @@ describe('AppComponent', () => {
               AuthGuard
           ],
     }).compileComponents()
-  }));
+}));
 
-  it('should create the app', (() => {
-      const fixture = TestBed.createComponent(AppComponent);
-      const app = fixture.debugElement.componentInstance;
-      expect(app).toBeTruthy();
-  }));
 
-    //  ------- EXAMPLES ------
-    //
-    //  it(`should have as title 'app'`, (() => {
-    //    const fixture = TestBed.createComponent(AppComponent);
-    //    const app = fixture.debugElement.componentInstance;
-    //    expect(app.title).toEqual('app');
-    //  }));
-    //
-    //  it('should render title in a h1 tag', (() => {
-    //    const fixture = TestBed.createComponent(AppComponent);
-    //    fixture.detectChanges();
-    //    const compiled = fixture.debugElement.nativeElement;
-    //    expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!!');
-    //  }));
+    beforeEach(() => {
+        fixture = TestBed.createComponent(AppComponent);
+        component = fixture.componentInstance;
+        de = fixture.debugElement;
+
+        authService = de.injector.get(AuthService);
+
+        fixture.detectChanges();
+    });
+
+    it('should create the app', (() => {
+        const app = fixture.debugElement.componentInstance;
+        expect(app).toBeTruthy();
+    }));
+
+    it('should return is logged in', (() => {
+        spy = spyOn(authService, 'isLoggedIn').and.returnValue(true);
+        expect(component.isLoggedIn()).toBe(true);
+    }));
+
+    it('should return is not logged in', (() => {
+        spy = spyOn(authService, 'isLoggedIn').and.returnValue(false);
+        expect(component.isLoggedIn()).toBe(false);
+    }));
+
+    it('should return is initialized', (() => {
+        spy = spyOn(authService, 'isInitialized').and.returnValue(true);
+        expect(component.isInitialized()).toBe(true);
+    }));
+
+    it('should return is not initialized', (() => {
+        spy = spyOn(authService, 'isInitialized').and.returnValue(false);
+        expect(component.isInitialized()).toBe(false);
+    }));
+
+    it('should contain router outlet', () => {
+        expect(de.query(By.css('router-outlet'))).toBeTruthy();
+    });
+
+    it('should contain splash loader element', () => {
+        expect(de.query(By.css('.loader'))).toBeTruthy();
+    });
 });

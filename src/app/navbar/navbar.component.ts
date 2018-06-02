@@ -5,6 +5,7 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 import { AuthService } from '../services/auth/auth.service';
 import { OfficerAuthGuard } from '../services/auth/auth-guard.service';
 
+
 @Component({
     selector: 'navbar-cmp',
     templateUrl: 'navbar.component.html',
@@ -15,8 +16,9 @@ export class NavbarComponent implements OnInit{
     private listTitles: any[];
     location: Location;
     private nativeElement: Node;
-    private toggleButton;
-    private sidebarVisible: boolean;
+    public toggleButton;
+    public sidebarVisible: boolean;
+
 
     @ViewChild("navbar-cmp") button;
 
@@ -41,7 +43,9 @@ export class NavbarComponent implements OnInit{
         var navbar : HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
     }
+
     getTitle(){
+
         var titlee = window.location.pathname;
         for(var item = 0; item < this.listTitles.length; item++){
             if(this.listTitles[item].path === titlee){
@@ -50,6 +54,7 @@ export class NavbarComponent implements OnInit{
         }
         return 'DePaul Safety Escort Service';
     }
+
     sidebarToggle(){
         var toggleButton = this.toggleButton;
         var body = document.getElementsByTagName('body')[0];
@@ -67,3 +72,5 @@ export class NavbarComponent implements OnInit{
         }
     }
 }
+
+

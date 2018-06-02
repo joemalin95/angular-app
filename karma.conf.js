@@ -17,7 +17,8 @@ module.exports = function (config) {
 			require('karma-remap-istanbul')
 		],
 		client                  : {
-			clearContext: false // leave Jasmine Spec Runner output visible in browser
+			clearContext: false, // leave Jasmine Spec Runner output visible in browser
+            captureConsole: true
 		},
 		files                   : [
 			{pattern: './src/test.ts', watched: false}

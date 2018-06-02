@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs/observable/of';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -16,37 +19,43 @@ import { AuthService } from '../services/auth/auth.service';
 import { OfficerAuthGuard } from '../services/auth/auth-guard.service';
 
 describe('SidebarComponent', () => {
-  let component: SidebarComponent;
-  let fixture: ComponentFixture<SidebarComponent>;
+    let component: SidebarComponent;
+    let fixture: ComponentFixture<SidebarComponent>;
+    let de: DebugElement;
+    let spy: jasmine.Spy;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-        declarations: [ 
-            SidebarComponent,
-        ],
-        imports: [
-            AngularFireModule.initializeApp(environment.firebaseConfig),
-            AngularFireDatabaseModule,
-            FormsModule,
-            RouterTestingModule,
-        ],
-        providers: [
-            EscortService,
-            AngularFireAuth,
-            OfficerAuthGuard,
-            AuthService
-        ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [ 
+                SidebarComponent,
+            ],
+            imports: [
+                AngularFireModule.initializeApp(environment.firebaseConfig),
+                AngularFireDatabaseModule,
+                FormsModule,
+                RouterTestingModule,
+            ],
+            providers: [
+                EscortService,
+                AngularFireAuth,
+                OfficerAuthGuard,
+                AuthService
+            ]
+        }).compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SidebarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(SidebarComponent);
+        component = fixture.componentInstance;
+        de = fixture.debugElement;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
+
+    it('should get title of page', () => {
+        expect(component.getTitle()).toEqual('DePaul Safety Escort Service');
+    });
 });

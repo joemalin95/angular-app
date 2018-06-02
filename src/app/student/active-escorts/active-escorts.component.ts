@@ -7,12 +7,10 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 @Component({
   selector: 'app-active-escorts',
   templateUrl: './active-escorts.component.html',
-  styleUrls: ['./active-escorts.component.scss']
 })
 export class ActiveEscortsComponent implements OnInit {
 
-
-    escortListUnassigned : Escort[];
+    activeEscortList : Escort[];
 
     constructor(
         private escortService : EscortService, 
@@ -20,18 +18,17 @@ export class ActiveEscortsComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-
         var esc = this.escortService.getEscortList();
         esc.snapshotChanges().subscribe(item => {
 
-            this.escortListUnassigned = [];
+            this.activeEscortList = [];
             item.forEach(element => {
 
                 var y = element.payload.toJSON();
                 y["$key"] = element.key;
                 var currentEscort = (y as Escort);
                 if(currentEscort.status == 'Unassigned' || currentEscort.status == 'Assigned') {
-                    this.escortListUnassigned.push(currentEscort);
+                    this.activeEscortList.push(currentEscort);
                 }             
             });
         });
