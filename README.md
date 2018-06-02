@@ -32,7 +32,7 @@ npm run-script ng build
 
 1. `npm run-script ng test`
 2. open http://localhost:9876/ in Chrome
-3. click on "Debug" in the Karma tab
+3. click on "Debug" in the Karma tab (this may take a few moments to begin)
 
 ## Built With
 
